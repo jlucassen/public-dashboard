@@ -1,0 +1,32 @@
+timezone: "America/Los_Angeles"
+
+lookback_days: 30
+
+toggl:
+  work_projects:
+    - "1. Work"
+    - "2. Learning"
+    - "3. Outer"
+  unendorsed_project: "6. Sins"
+  sleep_project: "5. Upkeep"
+  sleep_description: "Sleep"
+  all_projects:
+    - "1. Work"
+    - "2. Learning"
+    - "3. Outer"
+    - "4. Rest"
+    - "5. Upkeep"
+    - "6. Sins"
+
+todoist:
+  morning_tasks:
+    - "Morning Hygiene"
+    - "Morning OODA"
+  evening_tasks:
+    - "Night Hygiene"
+    - "Night OODA"
+
+google_sheets:
+  # Tab/sheet names within the spreadsheet
+  form_responses_sheet: "Form Responses 1"
+  freedom_sheet: "Freedom"

@@ -1,0 +1,30 @@
+.env
+*.pyc
+__pycache__/
+.venv/
+.python-version
+*.egg-info/
+dist/
+build/
+
+# Google service account credentials
+credentials/
+
+# Freedom tracker local logs
+.freedom_tracker/
+
+# Node
+node_modules/
+package.json
+package-lock.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# UV
+uv.lock
