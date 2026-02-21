@@ -12,7 +12,7 @@ from dotenv import load_dotenv
 
 from pipeline.toggl import get_workspace_and_projects, fetch_time_entries, compute_daily_metrics
 from pipeline.todoist import fetch_completed_items, compute_daily_completions
-from pipeline.google_sheets import fetch_form_responses, fetch_freedom_data
+from pipeline.google_sheets import fetch_form_responses
 
 
 def load_config() -> dict:
@@ -69,9 +69,8 @@ def run(start_date: str | None = None):
     print(f"  Todoist: {len(todoist_days)} days of data")
     print()
 
-    # --- Google Sheets (form + freedom) ---
+    # --- Google Sheets (form responses) ---
     habits_days: dict[str, dict] = {}
-    freedom_days: dict[str, float] = {}
     has_google = sheet_id and (google_creds_path or os.environ.get("GOOGLE_CREDENTIALS"))
 
     if has_google:
@@ -87,16 +86,6 @@ def run(start_date: str | None = None):
             )
         except Exception as e:
             print(f"  WARNING: Failed to fetch form responses: {e}")
-
-        try:
-            freedom_days = fetch_freedom_data(
-                sheet_id,
-                sheets_config["freedom_sheet"],
-                tz,
-                credentials_path=google_creds_path,
-            )
-        except Exception as e:
-            print(f"  WARNING: Failed to fetch Freedom data: {e}")
         print()
     else:
         print("[3/4] Skipping Google Sheets (no credentials configured)")
@@ -114,30 +103,20 @@ def run(start_date: str | None = None):
     days: list[dict] = []
     for date_str in all_dates:
         toggl = toggl_days.get(date_str, {})
-        freedom_hrs = freedom_days.get(date_str)
 
         total_hours = toggl.get("total_hours")
-        sleep_hours = toggl.get("sleep_hours")
         untracked = round(24 - total_hours, 2) if total_hours is not None else None
-
-        if freedom_hrs is not None:
-            waking = (24 - sleep_hours) if sleep_hours is not None else 24
-            blocker_downtime = round(max(0, waking - freedom_hrs), 2)
-        else:
-            blocker_downtime = None
 
         day: dict = {
             "date": date_str,
             "work_hours": toggl.get("work_hours"),
             "unendorsed_hours": toggl.get("unendorsed_hours"),
             "untracked_hours": untracked,
-            "blocker_downtime_hours": blocker_downtime,
             "sleep_hours": toggl.get("sleep_hours"),
             "bedtime": toggl.get("bedtime"),
             "wake_time": toggl.get("wake_time"),
             "todoist": todoist_days.get(date_str, {}),
             "habits": habits_days.get(date_str, {}),
-            "freedom_hours": freedom_hrs,
         }
         days.append(day)
 

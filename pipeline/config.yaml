@@ -27,6 +27,4 @@ todoist:
     - "Night OODA"
 
 google_sheets:
-  # Tab/sheet names within the spreadsheet
   form_responses_sheet: "Form Responses 1"
-  freedom_sheet: "Freedom"

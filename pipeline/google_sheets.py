@@ -1,4 +1,4 @@
-"""Google Sheets client. Reads form responses and Freedom uptime data."""
+"""Google Sheets client. Reads form responses."""
 
 import json
 import os
@@ -92,39 +92,6 @@ def fetch_form_responses(
     print(f"  Google Sheets: parsed {len(days)} days of form responses")
     return days
 
-
-def fetch_freedom_data(
-    sheet_id: str,
-    sheet_name: str,
-    tz: ZoneInfo,
-    credentials_path: str | None = None,
-) -> dict[str, float]:
-    """Read Freedom uptime data from Google Sheet.
-
-    Expects columns: date (YYYY-MM-DD), uptime_hours (float).
-    Returns {date_str: uptime_hours}.
-    """
-    service = _get_service(credentials_path)
-    result = service.spreadsheets().values().get(
-        spreadsheetId=sheet_id,
-        range=f"'{sheet_name}'",
-    ).execute()
-
-    rows = result.get("values", [])
-    if len(rows) < 2:
-        print("  Google Sheets: no Freedom data found")
-        return {}
-
-    days = {}
-    for row in rows[1:]:
-        if len(row) >= 2 and row[0].strip() and row[1].strip():
-            try:
-                days[row[0].strip()] = round(float(row[1]), 2)
-            except ValueError:
-                pass
-
-    print(f"  Google Sheets: parsed {len(days)} days of Freedom data")
-    return days
 
 
 def _parse_sheets_timestamp(ts: str, tz: ZoneInfo) -> datetime:

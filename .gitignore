@@ -10,8 +10,6 @@ build/
 # Google service account credentials
 credentials/
 
-# Freedom tracker local logs
-.freedom_tracker/
 
 # Node
 node_modules/

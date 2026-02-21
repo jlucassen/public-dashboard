@@ -7,7 +7,6 @@ A static dashboard hosted on GitHub Pages that aggregates daily productivity met
 - **Toggl Track**: Total hours, sleep (bedtime, wake time, duration), work hours, unendorsed activity hours
 - **Todoist**: Morning and evening routine task completion
 - **Google Forms**: Custom habit ratings (1-5 scale, flexible questions)
-- **Freedom**: App uptime tracking via local process monitor
 
 ## Architecture
 
@@ -52,19 +51,6 @@ Add these secrets to your GitHub repo (Settings > Secrets and variables > Action
 ### 5. GitHub Pages
 
 Enable GitHub Pages from the repo settings, serving from the `docs/` directory on the `main` branch.
-
-### 6. Freedom Tracker (Optional)
-
-Install the local process monitor:
-
-```bash
-chmod +x freedom_tracker/install.sh
-./freedom_tracker/install.sh
-```
-
-This installs two launchd agents:
-- **Tracker**: checks if Freedom is running every 5 minutes, logs locally
-- **Daily Summary**: pushes the day's uptime to Google Sheets at 11:55 PM
 
 ### Run Pipeline Locally
 

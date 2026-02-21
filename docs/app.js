@@ -83,13 +83,6 @@ function rateUntracked(h) {
     return "bad";
 }
 
-function rateBlocker(h) {
-    if (h === null || h === undefined) return "na";
-    if (h < 0.5) return "good";
-    if (h < 1) return "warn";
-    return "bad";
-}
-
 function rateSleep(h) {
     if (h === null || h === undefined) return "na";
     if (h < 7) return "bad";
@@ -175,7 +168,6 @@ function renderDayCard(date, data, isToday, isFuture) {
     const disciplineSection = renderSection("Discipline", [
         ["Unendorsed time", `<span class="${rateUnendorsed(data.unendorsed_hours)}">${formatHours(data.unendorsed_hours)}</span>`],
         ["Untracked time", `<span class="${rateUntracked(data.untracked_hours)}">${formatHours(data.untracked_hours)}</span>`],
-        ["Blocker downtime", `<span class="${rateBlocker(data.blocker_downtime_hours)}">${formatHours(data.blocker_downtime_hours)}</span>`],
     ], true);
 
     const sleepSection = renderSection("Sleep Schedule", [
