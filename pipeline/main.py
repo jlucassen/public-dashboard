@@ -59,15 +59,9 @@ def run(start_date: str | None = None):
 
     # --- Todoist ---
     print("[2/4] Fetching Todoist data...")
-    since_dt = datetime.strptime(start_date, "%Y-%m-%d").replace(tzinfo=tz)
-    until_dt = now
-    completed = fetch_completed_items(
-        todoist_token,
-        since=since_dt.isoformat(),
-        until=until_dt.isoformat(),
-    )
+    events = fetch_completed_items(todoist_token, since=start_date, until=today)
     todoist_days = compute_daily_completions(
-        completed, config["todoist"], tz, start_date, today,
+        events, config["todoist"], tz, start_date, today,
     )
     print(f"  Todoist: {len(todoist_days)} days of data")
     print()

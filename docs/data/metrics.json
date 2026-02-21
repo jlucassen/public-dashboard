@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-02-21T14:05:28.066357-08:00",
+  "last_updated": "2026-02-21T14:09:46.872063-08:00",
   "timezone": "America/Los_Angeles",
   "days": [
     {
@@ -11,10 +11,10 @@
       "bedtime": "21:47",
       "wake_time": "06:04",
       "todoist": {
-        "Morning Hygiene": false,
-        "Morning OODA": false,
-        "Night Hygiene": false,
-        "Night OODA": false
+        "Morning Hygiene": true,
+        "Morning OODA": true,
+        "Night Hygiene": true,
+        "Night OODA": true
       },
       "habits": {}
     },
@@ -27,10 +27,10 @@
       "bedtime": "22:37",
       "wake_time": "02:32",
       "todoist": {
-        "Morning Hygiene": false,
-        "Morning OODA": false,
-        "Night Hygiene": false,
-        "Night OODA": false
+        "Morning Hygiene": true,
+        "Morning OODA": true,
+        "Night Hygiene": true,
+        "Night OODA": true
       },
       "habits": {}
     },
@@ -43,10 +43,10 @@
       "bedtime": "21:19",
       "wake_time": "06:42",
       "todoist": {
-        "Morning Hygiene": false,
-        "Morning OODA": false,
+        "Morning Hygiene": true,
+        "Morning OODA": true,
         "Night Hygiene": false,
-        "Night OODA": false
+        "Night OODA": true
       },
       "habits": {}
     },
@@ -59,9 +59,9 @@
       "bedtime": "21:30",
       "wake_time": "07:01",
       "todoist": {
-        "Morning Hygiene": false,
-        "Morning OODA": false,
-        "Night Hygiene": false,
+        "Morning Hygiene": true,
+        "Morning OODA": true,
+        "Night Hygiene": true,
         "Night OODA": false
       },
       "habits": {}
@@ -75,8 +75,8 @@
       "bedtime": "22:00",
       "wake_time": "07:00",
       "todoist": {
-        "Morning Hygiene": false,
-        "Morning OODA": false,
+        "Morning Hygiene": true,
+        "Morning OODA": true,
         "Night Hygiene": false,
         "Night OODA": false
       },
@@ -107,7 +107,7 @@
       "bedtime": "21:00",
       "wake_time": "09:25",
       "todoist": {
-        "Morning Hygiene": false,
+        "Morning Hygiene": true,
         "Morning OODA": false,
         "Night Hygiene": false,
         "Night OODA": false
@@ -123,10 +123,10 @@
       "bedtime": "20:55",
       "wake_time": "07:00",
       "todoist": {
-        "Morning Hygiene": false,
-        "Morning OODA": false,
-        "Night Hygiene": false,
-        "Night OODA": false
+        "Morning Hygiene": true,
+        "Morning OODA": true,
+        "Night Hygiene": true,
+        "Night OODA": true
       },
       "habits": {}
     },
@@ -139,8 +139,8 @@
       "bedtime": "21:28",
       "wake_time": "07:08",
       "todoist": {
-        "Morning Hygiene": false,
-        "Morning OODA": false,
+        "Morning Hygiene": true,
+        "Morning OODA": true,
         "Night Hygiene": false,
         "Night OODA": false
       },
@@ -155,10 +155,10 @@
       "bedtime": "22:39",
       "wake_time": "06:40",
       "todoist": {
-        "Morning Hygiene": false,
-        "Morning OODA": false,
-        "Night Hygiene": false,
-        "Night OODA": false
+        "Morning Hygiene": true,
+        "Morning OODA": true,
+        "Night Hygiene": true,
+        "Night OODA": true
       },
       "habits": {}
     },
@@ -171,8 +171,8 @@
       "bedtime": "21:59",
       "wake_time": "05:03",
       "todoist": {
-        "Morning Hygiene": false,
-        "Morning OODA": false,
+        "Morning Hygiene": true,
+        "Morning OODA": true,
         "Night Hygiene": false,
         "Night OODA": false
       },
@@ -203,8 +203,8 @@
       "bedtime": "02:00",
       "wake_time": "08:30",
       "todoist": {
-        "Morning Hygiene": false,
-        "Morning OODA": false,
+        "Morning Hygiene": true,
+        "Morning OODA": true,
         "Night Hygiene": false,
         "Night OODA": false
       },
@@ -235,9 +235,9 @@
       "bedtime": "21:29",
       "wake_time": "05:30",
       "todoist": {
-        "Morning Hygiene": false,
-        "Morning OODA": false,
-        "Night Hygiene": false,
+        "Morning Hygiene": true,
+        "Morning OODA": true,
+        "Night Hygiene": true,
         "Night OODA": false
       },
       "habits": {}
@@ -251,8 +251,8 @@
       "bedtime": "21:33",
       "wake_time": "06:15",
       "todoist": {
-        "Morning Hygiene": false,
-        "Morning OODA": false,
+        "Morning Hygiene": true,
+        "Morning OODA": true,
         "Night Hygiene": false,
         "Night OODA": false
       },
@@ -315,8 +315,8 @@
       "bedtime": null,
       "wake_time": "07:28",
       "todoist": {
-        "Morning Hygiene": false,
-        "Morning OODA": false,
+        "Morning Hygiene": true,
+        "Morning OODA": true,
         "Night Hygiene": false,
         "Night OODA": false
       },
@@ -347,8 +347,8 @@
       "bedtime": null,
       "wake_time": "08:30",
       "todoist": {
-        "Morning Hygiene": false,
-        "Morning OODA": false,
+        "Morning Hygiene": true,
+        "Morning OODA": true,
         "Night Hygiene": false,
         "Night OODA": false
       },
@@ -459,7 +459,7 @@
       "bedtime": "21:20",
       "wake_time": "05:46",
       "todoist": {
-        "Morning Hygiene": false,
+        "Morning Hygiene": true,
         "Morning OODA": false,
         "Night Hygiene": false,
         "Night OODA": false
@@ -475,8 +475,8 @@
       "bedtime": "23:49",
       "wake_time": "06:45",
       "todoist": {
-        "Morning Hygiene": false,
-        "Morning OODA": false,
+        "Morning Hygiene": true,
+        "Morning OODA": true,
         "Night Hygiene": false,
         "Night OODA": false
       },

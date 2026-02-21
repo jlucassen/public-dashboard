@@ -1,8 +1,7 @@
-"""Todoist API client. Checks daily completion of individual recurring tasks."""
+"""Todoist API client. Checks daily completion of individual recurring tasks via activity log."""
 
 import requests
-from datetime import datetime
-from collections import defaultdict
+from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 
 
@@ -10,46 +9,48 @@ TODOIST_API = "https://api.todoist.com/api/v1"
 
 
 def fetch_completed_items(
-    token: str, since: str, until: str, limit: int = 200
+    token: str, since: str, until: str, limit: int = 100
 ) -> list[dict]:
-    """Fetch all completed items from Todoist API v1.
+    """Fetch completed-task activity events from Todoist API v1.
 
-    Args:
-        token: Todoist API token
-        since: ISO datetime string for range start
-        until: ISO datetime string for range end
-        limit: items per page (max 200)
+    Uses the activity log which, unlike the tasks/completed endpoints,
+    includes recurring task check-offs.
     """
-    all_items = []
+    all_events: list[dict] = []
     cursor = None
 
     while True:
-        params = {"since": since, "until": until, "limit": limit}
+        params: dict = {
+            "event_type": "completed",
+            "object_type": "item",
+            "limit": limit,
+        }
         if cursor:
             params["cursor"] = cursor
 
         resp = requests.get(
-            f"{TODOIST_API}/tasks/completed/by_completion_date",
+            f"{TODOIST_API}/activities",
             headers={"Authorization": f"Bearer {token}"},
             params=params,
             timeout=60,
         )
         resp.raise_for_status()
         data = resp.json()
-        items = data.get("items", [])
-        all_items.extend(items)
+        results = data.get("results", [])
+        all_events.extend(results)
 
-        print(f"  Todoist: fetched {len(items)} completed items (cursor={'yes' if cursor else 'initial'})")
+        label = f"cursor={cursor[:12]}..." if cursor else "initial"
+        print(f"  Todoist: fetched {len(results)} activity events ({label})")
 
         cursor = data.get("next_cursor")
-        if not cursor or not items:
+        if not cursor or not results:
             break
 
-    return all_items
+    return all_events
 
 
 def compute_daily_completions(
-    items: list[dict],
+    events: list[dict],
     config: dict,
     tz: ZoneInfo,
     start_date: str,
@@ -67,17 +68,18 @@ def compute_daily_completions(
 
     completed_pairs: set[tuple[str, str]] = set()
 
-    for item in items:
-        content = (item.get("content") or "").lower().strip()
-        completed_at = item.get("completed_at")
-        if not completed_at:
+    for event in events:
+        extra = event.get("extra_data") or {}
+        content = (extra.get("content") or "").lower().strip()
+        event_date = event.get("event_date")
+        if not event_date:
             continue
 
         if content not in all_task_names_lower:
             continue
 
         try:
-            dt = datetime.fromisoformat(completed_at.replace("Z", "+00:00")).astimezone(tz)
+            dt = datetime.fromisoformat(event_date.replace("Z", "+00:00")).astimezone(tz)
         except (ValueError, TypeError):
             continue
 
@@ -86,7 +88,6 @@ def compute_daily_completions(
 
     today = datetime.now(tz).strftime("%Y-%m-%d")
 
-    from datetime import timedelta
     current = datetime.strptime(start_date, "%Y-%m-%d")
     end = datetime.strptime(end_date, "%Y-%m-%d")
 
