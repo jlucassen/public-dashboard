@@ -186,12 +186,14 @@ def compute_daily_metrics(
             wake_day = stop_dt.strftime("%Y-%m-%d")
             days[wake_day]["full_sleep_seconds"] += full_duration
 
+    overlap_count = 0
     result = {}
     for date_str, data in sorted(days.items()):
         total_secs = data["total_seconds"]
-        assert total_secs <= 86400 + 60, (
-            f"{date_str}: total_seconds={total_secs} exceeds 24h"
-        )
+        if total_secs > 86400 + 60:
+            overlap_count += 1
+            print(f"  WARNING: {date_str} has {total_secs/3600:.1f}h tracked (overlapping entries), capping at 24h")
+            total_secs = 86400
 
         day_metrics: dict = {
             "total_hours": round(total_secs / 3600, 2),
@@ -209,4 +211,6 @@ def compute_daily_metrics(
 
         result[date_str] = day_metrics
 
+    if overlap_count:
+        print(f"  WARNING: {overlap_count} day(s) had overlapping entries")
     return result

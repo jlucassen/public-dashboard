@@ -38,8 +38,11 @@ def run(start_date: str | None = None):
     assert todoist_token, "TODOIST_TOKEN not set"
 
     if not start_date:
-        lookback = config.get("lookback_days", 30)
-        start_date = (now - timedelta(days=lookback)).strftime("%Y-%m-%d")
+        max_past_weeks = config.get("max_past_weeks", 4)
+        today_dt = now.replace(hour=0, minute=0, second=0, microsecond=0)
+        monday = today_dt - timedelta(days=today_dt.weekday())
+        earliest_monday = monday - timedelta(weeks=max_past_weeks)
+        start_date = earliest_monday.strftime("%Y-%m-%d")
 
     print(f"Pipeline run: {now.isoformat()}")
     print(f"Date range: {start_date} to {today}")

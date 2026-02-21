@@ -1,6 +1,6 @@
 timezone: "America/Los_Angeles"
 
-lookback_days: 30
+max_past_weeks: 4
 
 toggl:
   work_projects:
