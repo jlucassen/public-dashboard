@@ -1,6 +1,6 @@
 timezone: "America/Los_Angeles"
 
-max_past_weeks: 1
+max_past_weeks: 0
 
 toggl:
   work_projects:
