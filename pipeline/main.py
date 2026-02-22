@@ -120,6 +120,7 @@ def run(start_date: str | None = None):
     metrics = {
         "last_updated": now.isoformat(),
         "timezone": config["timezone"],
+        "max_past_weeks": config.get("max_past_weeks", 4),
         "days": days,
     }
 
