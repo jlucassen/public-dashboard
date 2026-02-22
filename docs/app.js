@@ -61,6 +61,13 @@ function statusDot(val) {
     return `<span class="status-dot pending"></span>`;
 }
 
+function combinedRoutineDot(a, b) {
+    if (a === true && b === true) return `<span class="status-dot done"></span>`;
+    if (a === true || b === true) return `<span class="status-dot partial"></span>`;
+    if (a === false || b === false) return `<span class="status-dot missed"></span>`;
+    return `<span class="status-dot pending"></span>`;
+}
+
 function rateWork(h) {
     if (h === null || h === undefined) return "na";
     if (h < 4) return "bad";
@@ -153,35 +160,25 @@ function renderDayCard(date, data, isToday, isFuture) {
 
     const todoist = data.todoist || {};
 
-    const workSection = renderSection("Work", [
-        ["Hours of work", `<span class="${rateWork(data.work_hours)}">${formatHours(data.work_hours)}</span>`],
+    const timeSection = renderSection("Time", [
+        ["Work", `<span class="${rateWork(data.work_hours)}">${formatHours(data.work_hours)}</span>`],
+        ["Sleep", `<span class="${rateSleep(data.sleep_hours)}">${formatHours(data.sleep_hours)}</span>`],
+        ["Unendorsed", `<span class="${rateUnendorsed(data.unendorsed_hours)}">${formatHours(data.unendorsed_hours)}</span>`],
+        ["Untracked", `<span class="${rateUntracked(data.untracked_hours)}">${formatHours(data.untracked_hours)}</span>`],
     ], true);
 
     const routineSection = renderSection("Routines", [
-        ["Morning Hygiene", statusDot(todoist["Morning Hygiene"])],
-        ["Morning OODA", statusDot(todoist["Morning OODA"])],
-        ["Night OODA", statusDot(todoist["Night OODA"])],
-        ["Night Hygiene", statusDot(todoist["Night Hygiene"])],
-    ], true);
-
-    const disciplineSection = renderSection("Discipline", [
-        ["Unendorsed time", `<span class="${rateUnendorsed(data.unendorsed_hours)}">${formatHours(data.unendorsed_hours)}</span>`],
-        ["Untracked time", `<span class="${rateUntracked(data.untracked_hours)}">${formatHours(data.untracked_hours)}</span>`],
-    ], true);
-
-    const sleepSection = renderSection("Sleep Schedule", [
-        ["Hours of sleep", `<span class="${rateSleep(data.sleep_hours)}">${formatHours(data.sleep_hours)}</span>`],
         ["Wake time", `<span class="${rateWakeTime(data.wake_time)}">${formatTime(data.wake_time)}</span>`],
+        ["Morning", combinedRoutineDot(todoist["Morning Hygiene"], todoist["Morning OODA"])],
+        ["Night", combinedRoutineDot(todoist["Night Hygiene"], todoist["Night OODA"])],
         ["Bed time", `<span class="${rateBedTime(data.bedtime)}">${formatTime(data.bedtime)}</span>`],
     ], true);
 
     const cls = isToday ? "day-card today" : "day-card";
     return `<div class="${cls}">
         ${headerHtml}
-        ${workSection}
+        ${timeSection}
         ${routineSection}
-        ${disciplineSection}
-        ${sleepSection}
     </div>`;
 }
 

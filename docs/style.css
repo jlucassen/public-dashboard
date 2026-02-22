@@ -199,6 +199,7 @@ body {
 }
 
 .status-dot.done { background: var(--green); }
+.status-dot.partial { background: var(--orange); }
 .status-dot.missed { background: var(--red); }
 .status-dot.pending { background: var(--text-dim); }
 
