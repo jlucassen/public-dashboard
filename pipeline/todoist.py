@@ -63,7 +63,7 @@ def compute_daily_completions(
 
     Returns {date_str: {task_name: True/False/None}}.
     """
-    all_task_names = config["morning_tasks"] + config["evening_tasks"]
+    all_task_names = config["morning_tasks"] + config["evening_tasks"] + config.get("virtue_tasks", [])
     all_task_names_lower = {n.lower(): n for n in all_task_names}
 
     completed_pairs: set[tuple[str, str]] = set()

@@ -25,6 +25,8 @@ todoist:
   evening_tasks:
     - "Night Hygiene"
     - "Night OODA"
+  virtue_tasks:
+    - "Fortitude"
 
 google_sheets:
   form_responses_sheet: "Form Responses 1"

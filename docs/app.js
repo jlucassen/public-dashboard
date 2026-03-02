@@ -174,11 +174,16 @@ function renderDayCard(date, data, isToday, isFuture) {
         ["Bed time", `<span class="${rateBedTime(data.bedtime)}">${formatTime(data.bedtime)}</span>`],
     ], true);
 
+    const virtueSection = renderSection("Virtue", [
+        ["Fortitude", statusDot(todoist["Fortitude"])],
+    ], true);
+
     const cls = isToday ? "day-card today" : "day-card";
     return `<div class="${cls}">
         ${headerHtml}
         ${timeSection}
         ${routineSection}
+        ${virtueSection}
     </div>`;
 }
 
