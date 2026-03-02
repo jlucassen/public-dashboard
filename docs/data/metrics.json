@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-03-01T00:02:26.854113-08:00",
+  "last_updated": "2026-03-01T21:26:24.647351-08:00",
   "timezone": "America/Los_Angeles",
   "max_past_weeks": 0,
   "days": [
@@ -15,7 +15,8 @@
         "Morning Hygiene": false,
         "Morning OODA": false,
         "Night Hygiene": false,
-        "Night OODA": false
+        "Night OODA": false,
+        "Fortitude": false
       },
       "habits": {}
     },
@@ -31,7 +32,8 @@
         "Morning Hygiene": false,
         "Morning OODA": false,
         "Night Hygiene": false,
-        "Night OODA": false
+        "Night OODA": false,
+        "Fortitude": false
       },
       "habits": {}
     },
@@ -47,7 +49,8 @@
         "Morning Hygiene": false,
         "Morning OODA": false,
         "Night Hygiene": false,
-        "Night OODA": false
+        "Night OODA": false,
+        "Fortitude": false
       },
       "habits": {}
     },
@@ -63,7 +66,8 @@
         "Morning Hygiene": false,
         "Morning OODA": false,
         "Night Hygiene": false,
-        "Night OODA": false
+        "Night OODA": false,
+        "Fortitude": false
       },
       "habits": {}
     },
@@ -79,7 +83,8 @@
         "Morning Hygiene": false,
         "Morning OODA": false,
         "Night Hygiene": false,
-        "Night OODA": false
+        "Night OODA": false,
+        "Fortitude": false
       },
       "habits": {}
     },
@@ -95,7 +100,8 @@
         "Morning Hygiene": false,
         "Morning OODA": false,
         "Night Hygiene": false,
-        "Night OODA": false
+        "Night OODA": false,
+        "Fortitude": false
       },
       "habits": {}
     },
@@ -111,7 +117,8 @@
         "Morning Hygiene": null,
         "Morning OODA": null,
         "Night Hygiene": null,
-        "Night OODA": null
+        "Night OODA": null,
+        "Fortitude": true
       },
       "habits": {}
     }
