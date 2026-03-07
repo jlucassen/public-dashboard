@@ -82,9 +82,10 @@ def run(start_date: str | None = None):
         day: dict = {
             "date": date_str,
             "work_hours": toggl.get("work_hours"),
+            "sleep_hours": toggl.get("sleep_hours"),
+            "other_hours": toggl.get("other_hours"),
             "unendorsed_hours": toggl.get("unendorsed_hours"),
             "untracked_hours": untracked,
-            "sleep_hours": toggl.get("sleep_hours"),
             "bedtime": toggl.get("bedtime"),
             "wake_time": toggl.get("wake_time"),
             "todoist": todoist_days.get(date_str, {}),

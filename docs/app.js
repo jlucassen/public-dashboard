@@ -75,6 +75,13 @@ function rateWork(h) {
     return "good";
 }
 
+function rateOther(h) {
+    if (h === null || h === undefined) return "na";
+    if (h <= 4) return "good";
+    if (h <= 8) return "warn";
+    return "bad";
+}
+
 function rateUnendorsed(h) {
     if (h === null || h === undefined) return "na";
     if (h < 0.5) return "good";
@@ -163,6 +170,7 @@ function renderDayCard(date, data, isToday, isFuture) {
     const timeSection = renderSection("Time", [
         ["Work", `<span class="${rateWork(data.work_hours)}">${formatHours(data.work_hours)}</span>`],
         ["Sleep", `<span class="${rateSleep(data.sleep_hours)}">${formatHours(data.sleep_hours)}</span>`],
+        ["Other", `<span class="${rateOther(data.other_hours)}">${formatHours(data.other_hours)}</span>`],
         ["Unendorsed", `<span class="${rateUnendorsed(data.unendorsed_hours)}">${formatHours(data.unendorsed_hours)}</span>`],
         ["Untracked", `<span class="${rateUntracked(data.untracked_hours)}">${formatHours(data.untracked_hours)}</span>`],
     ], true);

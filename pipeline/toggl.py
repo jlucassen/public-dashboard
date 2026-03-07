@@ -2,7 +2,7 @@
 
 All entries are split at midnight boundaries in local time so that each
 calendar day's totals reflect only the hours that fall within that day.
-This guarantees untracked_hours = 24 - total_hours is always in [0, 24].
+This guarantees work + sleep + other + unendorsed + untracked = 24 for each day.
 
 Sleep semantics:
   - bedtime on day D = start time of the sleep entry that begins on day D
@@ -111,13 +111,16 @@ def compute_daily_metrics(
 ) -> dict[str, dict]:
     """Aggregate time entries into daily metrics, splitting at midnight.
 
-    Returns {date_str: {total_hours, sleep_hours, bedtime, wake_time,
-                        work_hours, unendorsed_hours}}.
+    Returns {date_str: {total_hours, work_hours, sleep_hours, other_hours,
+                        unendorsed_hours, bedtime, wake_time}}.
+
+    All hour fields use midnight-split segments so that for each day:
+        work + sleep + other + unendorsed + untracked = 24
     """
     work_project_ids = {projects[n] for n in config["work_projects"] if n in projects}
     unendorsed_id = projects.get(config["unendorsed_project"])
     sleep_project_id = projects.get(config["sleep_project"])
-    sleep_desc = config["sleep_description"].lower()
+    sleep_descs = {d.lower() for d in config["sleep_descriptions"]}
     all_project_ids = {projects[n] for n in config["all_projects"] if n in projects}
 
     missing = [n for n in config["all_projects"] if n not in projects]
@@ -127,8 +130,8 @@ def compute_daily_metrics(
     days: dict[str, dict] = defaultdict(lambda: {
         "total_seconds": 0,
         "work_seconds": 0,
+        "sleep_seconds": 0,
         "unendorsed_seconds": 0,
-        "full_sleep_seconds": 0,
         "bedtime_dt": None,
         "wake_time_dt": None,
     })
@@ -152,7 +155,8 @@ def compute_daily_metrics(
         is_unendorsed = pid == unendorsed_id
 
         desc = (entry.get("description") or "").lower()
-        is_sleep = pid == sleep_project_id and desc == sleep_desc
+        is_sleep_category = pid == sleep_project_id and desc in sleep_descs
+        is_night_sleep = pid == sleep_project_id and desc == "sleep"
 
         for date_key, secs, has_start, has_end in _split_at_midnight(start_dt, stop_dt, tz):
             if is_tracked:
@@ -161,8 +165,10 @@ def compute_daily_metrics(
                 days[date_key]["work_seconds"] += secs
             if is_unendorsed:
                 days[date_key]["unendorsed_seconds"] += secs
+            if is_sleep_category:
+                days[date_key]["sleep_seconds"] += secs
 
-            if is_sleep:
+            if is_night_sleep:
                 early_morning = start_dt.hour < 3
 
                 if has_start:
@@ -181,11 +187,6 @@ def compute_daily_metrics(
                     if existing is None or stop_dt < existing:
                         days[date_key]["wake_time_dt"] = stop_dt
 
-        if is_sleep:
-            full_duration = (stop_dt - start_dt).total_seconds()
-            wake_day = stop_dt.strftime("%Y-%m-%d")
-            days[wake_day]["full_sleep_seconds"] += full_duration
-
     overlap_count = 0
     result = {}
     for date_str, data in sorted(days.items()):
@@ -195,11 +196,17 @@ def compute_daily_metrics(
             print(f"  WARNING: {date_str} has {total_secs/3600:.1f}h tracked (overlapping entries), capping at 24h")
             total_secs = 86400
 
+        work_secs = data["work_seconds"]
+        sleep_secs = data["sleep_seconds"]
+        unendorsed_secs = data["unendorsed_seconds"]
+        other_secs = max(0, total_secs - work_secs - sleep_secs - unendorsed_secs)
+
         day_metrics: dict = {
             "total_hours": round(total_secs / 3600, 2),
-            "work_hours": round(data["work_seconds"] / 3600, 2),
-            "unendorsed_hours": round(data["unendorsed_seconds"] / 3600, 2),
-            "sleep_hours": round(data["full_sleep_seconds"] / 3600, 2) if data["full_sleep_seconds"] > 0 else None,
+            "work_hours": round(work_secs / 3600, 2),
+            "sleep_hours": round(sleep_secs / 3600, 2),
+            "other_hours": round(other_secs / 3600, 2),
+            "unendorsed_hours": round(unendorsed_secs / 3600, 2),
             "bedtime": None,
             "wake_time": None,
         }
