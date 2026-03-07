@@ -43,9 +43,12 @@ def get_workspace_and_projects(token: str) -> tuple[int, dict[str, int]]:
 def fetch_time_entries(
     token: str, start_date: str, end_date: str
 ) -> list[dict]:
-    """Fetch time entries between start_date and end_date (YYYY-MM-DD).
+    """Fetch time entries between start_date and end_date (YYYY-MM-DD, local time).
 
     Toggl limits queries to ~90 days, so we chunk requests automatically.
+    The API uses UTC, so we pad the end by 2 days to ensure entries from the
+    last local day are captured even at UTC-12. The caller's midnight-split
+    logic handles assigning entries to the correct calendar day.
     """
     all_entries = []
     start = datetime.strptime(start_date, "%Y-%m-%d")
@@ -57,7 +60,7 @@ def fetch_time_entries(
         chunk_end = min(current + timedelta(days=chunk_days), end)
         params = {
             "start_date": current.strftime("%Y-%m-%dT00:00:00+00:00"),
-            "end_date": (chunk_end + timedelta(days=1)).strftime("%Y-%m-%dT00:00:00+00:00"),
+            "end_date": (chunk_end + timedelta(days=2)).strftime("%Y-%m-%dT00:00:00+00:00"),
         }
         resp = requests.get(
             f"{TOGGL_API}/me/time_entries",
