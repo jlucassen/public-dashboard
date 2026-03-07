@@ -1,8 +1,456 @@
 {
-  "last_updated": "2026-03-06T00:04:59.299057-08:00",
+  "last_updated": "2026-03-06T17:50:31.404050-08:00",
   "timezone": "America/Los_Angeles",
-  "max_past_weeks": 0,
+  "max_past_weeks": 4,
   "days": [
+    {
+      "date": "2026-02-02",
+      "work_hours": 8.02,
+      "unendorsed_hours": 0.9,
+      "untracked_hours": 1.49,
+      "sleep_hours": 6.0,
+      "bedtime": "21:29",
+      "wake_time": "05:30",
+      "todoist": {
+        "Morning Hygiene": true,
+        "Morning OODA": true,
+        "Night Hygiene": true,
+        "Night OODA": false,
+        "Fortitude": false
+      }
+    },
+    {
+      "date": "2026-02-03",
+      "work_hours": 7.37,
+      "unendorsed_hours": 2.11,
+      "untracked_hours": 0.29,
+      "sleep_hours": 8.76,
+      "bedtime": "21:33",
+      "wake_time": "06:15",
+      "todoist": {
+        "Morning Hygiene": true,
+        "Morning OODA": true,
+        "Night Hygiene": false,
+        "Night OODA": false,
+        "Fortitude": false
+      }
+    },
+    {
+      "date": "2026-02-04",
+      "work_hours": 6.34,
+      "unendorsed_hours": 2.84,
+      "untracked_hours": 3.04,
+      "sleep_hours": 7.95,
+      "bedtime": "23:00",
+      "wake_time": "05:30",
+      "todoist": {
+        "Morning Hygiene": false,
+        "Morning OODA": false,
+        "Night Hygiene": false,
+        "Night OODA": false,
+        "Fortitude": false
+      }
+    },
+    {
+      "date": "2026-02-05",
+      "work_hours": 3.31,
+      "unendorsed_hours": 0.83,
+      "untracked_hours": 11.14,
+      "sleep_hours": 8.0,
+      "bedtime": null,
+      "wake_time": "07:00",
+      "todoist": {
+        "Morning Hygiene": false,
+        "Morning OODA": false,
+        "Night Hygiene": false,
+        "Night OODA": false,
+        "Fortitude": false
+      }
+    },
+    {
+      "date": "2026-02-06",
+      "work_hours": 0.0,
+      "unendorsed_hours": 0.0,
+      "untracked_hours": 22.68,
+      "sleep_hours": null,
+      "bedtime": "22:40",
+      "wake_time": null,
+      "todoist": {
+        "Morning Hygiene": false,
+        "Morning OODA": false,
+        "Night Hygiene": false,
+        "Night OODA": false,
+        "Fortitude": false
+      }
+    },
+    {
+      "date": "2026-02-07",
+      "work_hours": 6.7,
+      "unendorsed_hours": 2.68,
+      "untracked_hours": 0.16,
+      "sleep_hours": 8.8,
+      "bedtime": null,
+      "wake_time": "07:28",
+      "todoist": {
+        "Morning Hygiene": true,
+        "Morning OODA": true,
+        "Night Hygiene": false,
+        "Night OODA": false,
+        "Fortitude": false
+      }
+    },
+    {
+      "date": "2026-02-08",
+      "work_hours": 0.0,
+      "unendorsed_hours": 8.0,
+      "untracked_hours": 0.0,
+      "sleep_hours": 7.0,
+      "bedtime": "00:00",
+      "wake_time": null,
+      "todoist": {
+        "Morning Hygiene": false,
+        "Morning OODA": false,
+        "Night Hygiene": false,
+        "Night OODA": false,
+        "Fortitude": false
+      }
+    },
+    {
+      "date": "2026-02-09",
+      "work_hours": 7.65,
+      "unendorsed_hours": 0.0,
+      "untracked_hours": 6.79,
+      "sleep_hours": 8.5,
+      "bedtime": null,
+      "wake_time": "08:30",
+      "todoist": {
+        "Morning Hygiene": true,
+        "Morning OODA": true,
+        "Night Hygiene": false,
+        "Night OODA": false,
+        "Fortitude": false
+      }
+    },
+    {
+      "date": "2026-02-10",
+      "work_hours": 0.0,
+      "unendorsed_hours": 0.0,
+      "untracked_hours": 22.78,
+      "sleep_hours": null,
+      "bedtime": "22:46",
+      "wake_time": null,
+      "todoist": {
+        "Morning Hygiene": false,
+        "Morning OODA": false,
+        "Night Hygiene": false,
+        "Night OODA": false,
+        "Fortitude": false
+      }
+    },
+    {
+      "date": "2026-02-11",
+      "work_hours": 0.0,
+      "unendorsed_hours": 0.0,
+      "untracked_hours": 14.13,
+      "sleep_hours": 9.11,
+      "bedtime": "22:00",
+      "wake_time": "07:52",
+      "todoist": {
+        "Morning Hygiene": false,
+        "Morning OODA": false,
+        "Night Hygiene": false,
+        "Night OODA": false,
+        "Fortitude": false
+      }
+    },
+    {
+      "date": "2026-02-12",
+      "work_hours": 12.48,
+      "unendorsed_hours": 0.41,
+      "untracked_hours": 0.0,
+      "sleep_hours": 9.25,
+      "bedtime": "21:10",
+      "wake_time": "07:16",
+      "todoist": {
+        "Morning Hygiene": false,
+        "Morning OODA": false,
+        "Night Hygiene": false,
+        "Night OODA": false,
+        "Fortitude": false
+      }
+    },
+    {
+      "date": "2026-02-13",
+      "work_hours": 0.0,
+      "unendorsed_hours": 0.0,
+      "untracked_hours": 17.94,
+      "sleep_hours": 8.89,
+      "bedtime": null,
+      "wake_time": "06:03",
+      "todoist": {
+        "Morning Hygiene": false,
+        "Morning OODA": false,
+        "Night Hygiene": false,
+        "Night OODA": false,
+        "Fortitude": false
+      }
+    },
+    {
+      "date": "2026-02-14",
+      "work_hours": null,
+      "unendorsed_hours": null,
+      "untracked_hours": null,
+      "sleep_hours": null,
+      "bedtime": null,
+      "wake_time": null,
+      "todoist": {
+        "Morning Hygiene": false,
+        "Morning OODA": false,
+        "Night Hygiene": false,
+        "Night OODA": false,
+        "Fortitude": false
+      }
+    },
+    {
+      "date": "2026-02-15",
+      "work_hours": 0.0,
+      "unendorsed_hours": 0.0,
+      "untracked_hours": 21.01,
+      "sleep_hours": null,
+      "bedtime": "21:00",
+      "wake_time": null,
+      "todoist": {
+        "Morning Hygiene": false,
+        "Morning OODA": false,
+        "Night Hygiene": false,
+        "Night OODA": false,
+        "Fortitude": false
+      }
+    },
+    {
+      "date": "2026-02-16",
+      "work_hours": 11.52,
+      "unendorsed_hours": 1.59,
+      "untracked_hours": 0.31,
+      "sleep_hours": 8.76,
+      "bedtime": "21:20",
+      "wake_time": "05:46",
+      "todoist": {
+        "Morning Hygiene": true,
+        "Morning OODA": false,
+        "Night Hygiene": false,
+        "Night OODA": false,
+        "Fortitude": false
+      }
+    },
+    {
+      "date": "2026-02-17",
+      "work_hours": 7.61,
+      "unendorsed_hours": 2.94,
+      "untracked_hours": 0.2,
+      "sleep_hours": 9.42,
+      "bedtime": "23:49",
+      "wake_time": "06:45",
+      "todoist": {
+        "Morning Hygiene": true,
+        "Morning OODA": true,
+        "Night Hygiene": false,
+        "Night OODA": false,
+        "Fortitude": false
+      }
+    },
+    {
+      "date": "2026-02-18",
+      "work_hours": 6.11,
+      "unendorsed_hours": 4.68,
+      "untracked_hours": 0.71,
+      "sleep_hours": 8.18,
+      "bedtime": "00:00",
+      "wake_time": "08:00",
+      "todoist": {
+        "Morning Hygiene": false,
+        "Morning OODA": false,
+        "Night Hygiene": false,
+        "Night OODA": false,
+        "Fortitude": false
+      }
+    },
+    {
+      "date": "2026-02-19",
+      "work_hours": 6.9,
+      "unendorsed_hours": 1.07,
+      "untracked_hours": 3.57,
+      "sleep_hours": 9.5,
+      "bedtime": null,
+      "wake_time": "09:30",
+      "todoist": {
+        "Morning Hygiene": false,
+        "Morning OODA": false,
+        "Night Hygiene": false,
+        "Night OODA": false,
+        "Fortitude": false
+      }
+    },
+    {
+      "date": "2026-02-20",
+      "work_hours": null,
+      "unendorsed_hours": null,
+      "untracked_hours": null,
+      "sleep_hours": null,
+      "bedtime": null,
+      "wake_time": null,
+      "todoist": {
+        "Morning Hygiene": false,
+        "Morning OODA": false,
+        "Night Hygiene": false,
+        "Night OODA": false,
+        "Fortitude": false
+      }
+    },
+    {
+      "date": "2026-02-21",
+      "work_hours": 0.0,
+      "unendorsed_hours": 0.0,
+      "untracked_hours": 24.0,
+      "sleep_hours": null,
+      "bedtime": "01:21",
+      "wake_time": null,
+      "todoist": {
+        "Morning Hygiene": true,
+        "Morning OODA": false,
+        "Night Hygiene": false,
+        "Night OODA": false,
+        "Fortitude": false
+      }
+    },
+    {
+      "date": "2026-02-22",
+      "work_hours": 0.65,
+      "unendorsed_hours": 0.92,
+      "untracked_hours": 1.36,
+      "sleep_hours": 9.48,
+      "bedtime": "21:59",
+      "wake_time": "10:00",
+      "todoist": {
+        "Morning Hygiene": true,
+        "Morning OODA": true,
+        "Night Hygiene": false,
+        "Night OODA": false,
+        "Fortitude": false
+      }
+    },
+    {
+      "date": "2026-02-23",
+      "work_hours": 8.05,
+      "unendorsed_hours": 1.51,
+      "untracked_hours": -0.01,
+      "sleep_hours": 8.96,
+      "bedtime": "21:07",
+      "wake_time": "06:13",
+      "todoist": {
+        "Morning Hygiene": false,
+        "Morning OODA": false,
+        "Night Hygiene": false,
+        "Night OODA": false,
+        "Fortitude": false
+      }
+    },
+    {
+      "date": "2026-02-24",
+      "work_hours": 8.77,
+      "unendorsed_hours": 0.0,
+      "untracked_hours": 0.11,
+      "sleep_hours": 9.26,
+      "bedtime": "21:00",
+      "wake_time": "07:38",
+      "todoist": {
+        "Morning Hygiene": false,
+        "Morning OODA": false,
+        "Night Hygiene": false,
+        "Night OODA": false,
+        "Fortitude": false
+      }
+    },
+    {
+      "date": "2026-03-03",
+      "work_hours": 5.14,
+      "unendorsed_hours": 0.4,
+      "untracked_hours": 0.5,
+      "sleep_hours": 8.24,
+      "bedtime": "22:14",
+      "wake_time": "04:10",
+      "todoist": {
+        "Morning Hygiene": false,
+        "Morning OODA": false,
+        "Night Hygiene": false,
+        "Night OODA": false,
+        "Fortitude": false
+      }
+    },
+    {
+      "date": "2026-03-04",
+      "work_hours": 7.09,
+      "unendorsed_hours": 0.0,
+      "untracked_hours": 3.25,
+      "sleep_hours": 8.62,
+      "bedtime": "21:00",
+      "wake_time": "06:51",
+      "todoist": {
+        "Morning Hygiene": true,
+        "Morning OODA": false,
+        "Night Hygiene": false,
+        "Night OODA": false,
+        "Fortitude": false
+      }
+    },
+    {
+      "date": "2026-03-05",
+      "work_hours": 10.59,
+      "unendorsed_hours": 0.0,
+      "untracked_hours": 0.0,
+      "sleep_hours": 9.04,
+      "bedtime": null,
+      "wake_time": "06:03",
+      "todoist": {
+        "Morning Hygiene": false,
+        "Morning OODA": false,
+        "Night Hygiene": false,
+        "Night OODA": false,
+        "Fortitude": false
+      }
+    },
+    {
+      "date": "2026-02-28",
+      "work_hours": null,
+      "unendorsed_hours": null,
+      "untracked_hours": null,
+      "sleep_hours": null,
+      "bedtime": null,
+      "wake_time": null,
+      "todoist": {
+        "Morning Hygiene": false,
+        "Morning OODA": false,
+        "Night Hygiene": false,
+        "Night OODA": false,
+        "Fortitude": false
+      }
+    },
+    {
+      "date": "2026-03-01",
+      "work_hours": 0.0,
+      "unendorsed_hours": 0.0,
+      "untracked_hours": 22.38,
+      "sleep_hours": null,
+      "bedtime": "22:22",
+      "wake_time": null,
+      "todoist": {
+        "Morning Hygiene": false,
+        "Morning OODA": false,
+        "Night Hygiene": false,
+        "Night OODA": false,
+        "Fortitude": true
+      }
+    },
     {
       "date": "2026-03-02",
       "work_hours": 9.11,
@@ -17,8 +465,7 @@
         "Night Hygiene": true,
         "Night OODA": true,
         "Fortitude": true
-      },
-      "habits": {}
+      }
     },
     {
       "date": "2026-03-03",
@@ -34,8 +481,7 @@
         "Night Hygiene": true,
         "Night OODA": false,
         "Fortitude": true
-      },
-      "habits": {}
+      }
     },
     {
       "date": "2026-03-04",
@@ -51,8 +497,7 @@
         "Night Hygiene": true,
         "Night OODA": false,
         "Fortitude": true
-      },
-      "habits": {}
+      }
     },
     {
       "date": "2026-03-05",
@@ -60,7 +505,7 @@
       "unendorsed_hours": 0.0,
       "untracked_hours": 0.0,
       "sleep_hours": 9.04,
-      "bedtime": null,
+      "bedtime": "21:18",
       "wake_time": "06:03",
       "todoist": {
         "Morning Hygiene": true,
@@ -68,25 +513,23 @@
         "Night Hygiene": true,
         "Night OODA": false,
         "Fortitude": true
-      },
-      "habits": {}
+      }
     },
     {
       "date": "2026-03-06",
-      "work_hours": null,
-      "unendorsed_hours": null,
-      "untracked_hours": null,
-      "sleep_hours": null,
+      "work_hours": 8.16,
+      "unendorsed_hours": 0.0,
+      "untracked_hours": 7.87,
+      "sleep_hours": 8.99,
       "bedtime": null,
-      "wake_time": null,
+      "wake_time": "06:17",
       "todoist": {
-        "Morning Hygiene": null,
-        "Morning OODA": null,
+        "Morning Hygiene": true,
+        "Morning OODA": true,
         "Night Hygiene": null,
         "Night OODA": null,
         "Fortitude": null
-      },
-      "habits": {}
+      }
     }
   ]
 }

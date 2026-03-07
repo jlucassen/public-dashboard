@@ -12,7 +12,6 @@ from dotenv import load_dotenv
 
 from pipeline.toggl import get_workspace_and_projects, fetch_time_entries, compute_daily_metrics
 from pipeline.todoist import fetch_completed_items, compute_daily_completions
-from pipeline.google_sheets import fetch_form_responses
 
 
 def load_config() -> dict:
@@ -31,8 +30,6 @@ def run(start_date: str | None = None):
 
     toggl_token = os.environ.get("TOGGL_TOKEN")
     todoist_token = os.environ.get("TODOIST_TOKEN")
-    sheet_id = os.environ.get("DAILY_FORM_SHEET_ID")
-    google_creds_path = os.environ.get("GOOGLE_CREDENTIALS_PATH")
 
     assert toggl_token, "TOGGL_TOKEN not set"
     assert todoist_token, "TODOIST_TOKEN not set"
@@ -49,7 +46,7 @@ def run(start_date: str | None = None):
     print()
 
     # --- Toggl ---
-    print("[1/4] Fetching Toggl data...")
+    print("[1/3] Fetching Toggl data...")
     workspace_id, projects = get_workspace_and_projects(toggl_token)
     print(f"  Workspace: {workspace_id}, Projects: {list(projects.keys())}")
     entries = fetch_time_entries(toggl_token, start_date, today)
@@ -58,7 +55,7 @@ def run(start_date: str | None = None):
     print()
 
     # --- Todoist ---
-    print("[2/4] Fetching Todoist data...")
+    print("[2/3] Fetching Todoist data...")
     events = fetch_completed_items(todoist_token, since=start_date, until=today)
     todoist_days = compute_daily_completions(
         events, config["todoist"], tz, start_date, today,
@@ -66,30 +63,8 @@ def run(start_date: str | None = None):
     print(f"  Todoist: {len(todoist_days)} days of data")
     print()
 
-    # --- Google Sheets (form responses) ---
-    habits_days: dict[str, dict] = {}
-    has_google = sheet_id and (google_creds_path or os.environ.get("GOOGLE_CREDENTIALS"))
-
-    if has_google:
-        assert sheet_id is not None
-        print("[3/4] Fetching Google Sheets data...")
-        sheets_config = config["google_sheets"]
-        try:
-            habits_days = fetch_form_responses(
-                sheet_id,
-                sheets_config["form_responses_sheet"],
-                tz,
-                credentials_path=google_creds_path,
-            )
-        except Exception as e:
-            print(f"  WARNING: Failed to fetch form responses: {e}")
-        print()
-    else:
-        print("[3/4] Skipping Google Sheets (no credentials configured)")
-        print()
-
     # --- Merge ---
-    print("[4/4] Merging and writing metrics...")
+    print("[3/3] Merging and writing metrics...")
     all_dates = []
     d = datetime.strptime(start_date, "%Y-%m-%d")
     end_d = datetime.strptime(today, "%Y-%m-%d")
@@ -113,7 +88,6 @@ def run(start_date: str | None = None):
             "bedtime": toggl.get("bedtime"),
             "wake_time": toggl.get("wake_time"),
             "todoist": todoist_days.get(date_str, {}),
-            "habits": habits_days.get(date_str, {}),
         }
         days.append(day)
 

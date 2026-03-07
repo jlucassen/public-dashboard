@@ -1,6 +1,6 @@
 timezone: "America/Los_Angeles"
 
-max_past_weeks: 0
+max_past_weeks: 4
 
 toggl:
   work_projects:
@@ -27,6 +27,3 @@ todoist:
     - "Night OODA"
   virtue_tasks:
     - "Fortitude"
-
-google_sheets:
-  form_responses_sheet: "Form Responses 1"

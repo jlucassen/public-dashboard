@@ -27,14 +27,12 @@ jobs:
       - name: Install dependencies
         run: |
           uv venv
-          uv pip install requests python-dotenv pyyaml google-api-python-client google-auth
+          uv pip install requests python-dotenv pyyaml
 
       - name: Run pipeline
         env:
           TOGGL_TOKEN: ${{ secrets.TOGGL_TOKEN }}
           TODOIST_TOKEN: ${{ secrets.TODOIST_TOKEN }}
-          DAILY_FORM_SHEET_ID: ${{ secrets.DAILY_FORM_SHEET_ID }}
-          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
         run: |
           source .venv/bin/activate
           python -m pipeline.main
