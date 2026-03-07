@@ -1,6 +1,6 @@
 const DAY_NAMES = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 const MONTH_NAMES = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-let MAX_PAST_WEEKS = 4;
+let MAX_PAST_WEEKS = null;
 let allData = {};
 let weekOffset = 0;
 
@@ -218,7 +218,8 @@ async function main() {
     if (!resp.ok) return;
     const data = await resp.json();
 
-    if (data.max_past_weeks != null) MAX_PAST_WEEKS = data.max_past_weeks;
+    if (data.max_past_weeks == null) throw new Error("max_past_weeks not found in metrics.json");
+    MAX_PAST_WEEKS = data.max_past_weeks;
 
     for (const day of (data.days || [])) {
         allData[day.date] = day;

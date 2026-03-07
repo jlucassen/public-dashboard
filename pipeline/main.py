@@ -35,7 +35,7 @@ def run(start_date: str | None = None):
     assert todoist_token, "TODOIST_TOKEN not set"
 
     if not start_date:
-        max_past_weeks = config.get("max_past_weeks", 4)
+        max_past_weeks = config["max_past_weeks"]
         today_dt = now.replace(hour=0, minute=0, second=0, microsecond=0)
         monday = today_dt - timedelta(days=today_dt.weekday())
         earliest_monday = monday - timedelta(weeks=max_past_weeks)
@@ -94,7 +94,7 @@ def run(start_date: str | None = None):
     metrics = {
         "last_updated": now.isoformat(),
         "timezone": config["timezone"],
-        "max_past_weeks": config.get("max_past_weeks", 4),
+        "max_past_weeks": config["max_past_weeks"],
         "days": days,
     }
 
