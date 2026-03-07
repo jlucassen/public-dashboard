@@ -56,34 +56,46 @@ function formatWeekLabel(monday) {
 }
 
 function statusDot(val) {
-    if (val === true) return `<span class="status-dot done"></span>`;
-    if (val === false) return `<span class="status-dot missed"></span>`;
-    return `<span class="status-dot pending"></span>`;
+    const dot = val === true ? `<span class="status-dot done"></span>`
+        : val === false ? `<span class="status-dot missed"></span>`
+        : `<span class="status-dot pending"></span>`;
+    if (val === null || val === undefined) return dot;
+    const n = val === true ? 1 : 0;
+    const cls = val === true ? "good" : "bad";
+    return `<span class="has-tooltip">${dot}<span class="tooltip"><span class="tooltip-line ${cls}">${n}/1</span></span></span>`;
 }
 
 function combinedRoutineDot(a, b) {
-    if (a === true && b === true) return `<span class="status-dot done"></span>`;
-    if (a === true || b === true) return `<span class="status-dot partial"></span>`;
-    if (a === false || b === false) return `<span class="status-dot missed"></span>`;
-    return `<span class="status-dot pending"></span>`;
+    const done = (a === true ? 1 : 0) + (b === true ? 1 : 0);
+    let dotCls, tipCls;
+    if (a === true && b === true) { dotCls = "done"; tipCls = "good"; }
+    else if (a === true || b === true) { dotCls = "partial"; tipCls = "warn"; }
+    else if (a === false || b === false) { dotCls = "missed"; tipCls = "bad"; }
+    else { dotCls = "pending"; tipCls = "na"; }
+    const dot = `<span class="status-dot ${dotCls}"></span>`;
+    if (dotCls === "pending") return dot;
+    return `<span class="has-tooltip">${dot}<span class="tooltip"><span class="tooltip-line ${tipCls}">${done}/2</span></span></span>`;
 }
 
 function rateWork(h) {
     if (h === null || h === undefined) return "na";
-    if (h < 4) return "bad";
+    if (h < 6) return "bad";
     if (h < 8) return "warn";
-    return "good";
+    if (h <= 10) return "good";
+    return "great";
 }
 
 function rateOther(h) {
     if (h === null || h === undefined) return "na";
-    if (h <= 4) return "good";
-    if (h <= 8) return "warn";
+    if (h < 3) return "great";
+    if (h < 4) return "good";
+    if (h <= 6) return "warn";
     return "bad";
 }
 
 function rateUnendorsed(h) {
     if (h === null || h === undefined) return "na";
+    if (h === 0) return "great";
     if (h < 0.5) return "good";
     if (h < 1) return "warn";
     return "bad";
@@ -91,6 +103,7 @@ function rateUnendorsed(h) {
 
 function rateUntracked(h) {
     if (h === null || h === undefined) return "na";
+    if (h < 0.5) return "great";
     if (h < 1) return "good";
     if (h < 2) return "warn";
     return "bad";
@@ -132,6 +145,26 @@ function rateBedTime(t) {
     return "bad";
 }
 
+function tooltipHtml(lines) {
+    return `<span class="tooltip">${lines.map(([text, cls]) =>
+        `<span class="tooltip-line ${cls}">${text}</span>`
+    ).join("")}</span>`;
+}
+
+function withTooltip(valueHtml, lines) {
+    return `<span class="has-tooltip">${valueHtml}${tooltipHtml(lines)}</span>`;
+}
+
+const GOALS = {
+    work: [["> 10h", "great"], ["8h – 10h", "good"], ["6h – 8h", "warn"], ["< 6h", "bad"]],
+    sleep: [["> 10h", "bad"], ["9h – 10h", "warn"], ["8h – 9h", "good"], ["7h – 8h", "warn"], ["< 7h", "bad"]],
+    other: [["> 6h", "bad"], ["4h – 6h", "warn"], ["3h – 4h", "good"], ["< 3h", "great"]],
+    unendorsed: [["> 1h", "bad"], ["30m – 1h", "warn"], ["< 30m", "good"], ["0", "great"]],
+    untracked: [["> 2h", "bad"], ["1h – 2h", "warn"], ["30m – 1h", "good"], ["< 30m", "great"]],
+    wakeTime: [["> 7:00", "bad"], ["6:00 – 7:00", "warn"], ["5:00 – 6:00", "good"], ["4:00 – 5:00", "warn"], ["< 4:00", "bad"]],
+    bedTime: [["> 23:00", "bad"], ["22:00 – 23:00", "warn"], ["21:00 – 22:00", "good"], ["20:00 – 21:00", "warn"], ["< 20:00", "bad"]],
+};
+
 function renderSection(title, rows, startExpanded) {
     const collapsed = startExpanded ? "" : " collapsed";
     const rowsHtml = rows.map(([label, valueHtml]) =>
@@ -168,18 +201,18 @@ function renderDayCard(date, data, isToday, isFuture) {
     const todoist = data.todoist || {};
 
     const timeSection = renderSection("Time", [
-        ["Work", `<span class="${rateWork(data.work_hours)}">${formatHours(data.work_hours)}</span>`],
-        ["Sleep", `<span class="${rateSleep(data.sleep_hours)}">${formatHours(data.sleep_hours)}</span>`],
-        ["Other", `<span class="${rateOther(data.other_hours)}">${formatHours(data.other_hours)}</span>`],
-        ["Unendorsed", `<span class="${rateUnendorsed(data.unendorsed_hours)}">${formatHours(data.unendorsed_hours)}</span>`],
-        ["Untracked", `<span class="${rateUntracked(data.untracked_hours)}">${formatHours(data.untracked_hours)}</span>`],
+        ["Work", withTooltip(`<span class="${rateWork(data.work_hours)}">${formatHours(data.work_hours)}</span>`, GOALS.work)],
+        ["Sleep", withTooltip(`<span class="${rateSleep(data.sleep_hours)}">${formatHours(data.sleep_hours)}</span>`, GOALS.sleep)],
+        ["Other", withTooltip(`<span class="${rateOther(data.other_hours)}">${formatHours(data.other_hours)}</span>`, GOALS.other)],
+        ["Unendorsed", withTooltip(`<span class="${rateUnendorsed(data.unendorsed_hours)}">${formatHours(data.unendorsed_hours)}</span>`, GOALS.unendorsed)],
+        ["Untracked", withTooltip(`<span class="${rateUntracked(data.untracked_hours)}">${formatHours(data.untracked_hours)}</span>`, GOALS.untracked)],
     ], true);
 
     const routineSection = renderSection("Routines", [
-        ["Wake time", `<span class="${rateWakeTime(data.wake_time)}">${formatTime(data.wake_time)}</span>`],
+        ["Wake time", withTooltip(`<span class="${rateWakeTime(data.wake_time)}">${formatTime(data.wake_time)}</span>`, GOALS.wakeTime)],
         ["Morning", combinedRoutineDot(todoist["Morning Hygiene"], todoist["Morning OODA"])],
         ["Night", combinedRoutineDot(todoist["Night Hygiene"], todoist["Night OODA"])],
-        ["Bed time", `<span class="${rateBedTime(data.bedtime)}">${formatTime(data.bedtime)}</span>`],
+        ["Bed time", withTooltip(`<span class="${rateBedTime(data.bedtime)}">${formatTime(data.bedtime)}</span>`, GOALS.bedTime)],
     ], true);
 
     const virtueSection = renderSection("Virtue", [

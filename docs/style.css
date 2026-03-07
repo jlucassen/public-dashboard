@@ -10,6 +10,7 @@
     --green: #22c55e;
     --red: #ef4444;
     --orange: #f59e0b;
+    --blue: #3b82f6;
     --section-bg: #151821;
     --hover: #22253a;
 }
@@ -76,7 +77,7 @@ body {
     background: var(--card-bg);
     border: 1px solid var(--border);
     border-radius: 10px;
-    overflow: hidden;
+    overflow: visible;
     min-height: 120px;
 }
 
@@ -188,6 +189,7 @@ body {
 .metric-value.bad, .bad { color: var(--red); }
 .metric-value.good, .good { color: var(--green); }
 .metric-value.na, .na { color: var(--text-dim); }
+.metric-value.great, .great { color: var(--blue); }
 
 /* Status dots */
 .status-dot {
@@ -203,6 +205,39 @@ body {
 .status-dot.missed { background: var(--red); }
 .status-dot.pending { background: var(--text-dim); }
 
+
+/* Tooltips */
+.has-tooltip {
+    position: relative;
+    cursor: help;
+}
+
+.tooltip {
+    display: none;
+    position: absolute;
+    right: 0;
+    bottom: 100%;
+    margin-bottom: 4px;
+    background: #1e2130;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.35rem 0.5rem;
+    white-space: nowrap;
+    z-index: 100;
+    font-size: 0.65rem;
+    font-weight: 400;
+    line-height: 1.6;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    pointer-events: none;
+}
+
+.has-tooltip:hover .tooltip {
+    display: block;
+}
+
+.tooltip-line {
+    display: block;
+}
 
 /* Responsive: stack on small screens */
 @media (max-width: 900px) {
