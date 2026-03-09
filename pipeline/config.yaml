@@ -1,6 +1,6 @@
 timezone: "America/Los_Angeles"
 
-max_past_weeks: 2
+max_past_weeks: 1
 
 toggl:
   work_projects:
@@ -29,3 +29,4 @@ todoist:
     - "Night OODA"
   virtue_tasks:
     - "Fortitude"
+    - "Eat Healthy"
