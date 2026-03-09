@@ -217,6 +217,7 @@ function renderDayCard(date, data, isToday, isFuture) {
 
     const virtueSection = renderSection("Virtue", [
         ["Fortitude", statusDot(todoist["Fortitude"])],
+        ["Eat Healthy", statusDot(todoist["Eat Healthy"])],
     ], true);
 
     const cls = isToday ? "day-card today" : "day-card";
