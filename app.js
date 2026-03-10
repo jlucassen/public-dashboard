@@ -203,7 +203,6 @@ function renderDayCard(date, data, isToday, isFuture) {
     const timeSection = renderSection("Time", [
         ["Work", withTooltip(`<span class="${rateWork(data.work_hours)}">${formatHours(data.work_hours)}</span>`, GOALS.work)],
         ["Sleep", withTooltip(`<span class="${rateSleep(data.sleep_hours)}">${formatHours(data.sleep_hours)}</span>`, GOALS.sleep)],
-        ["Other", withTooltip(`<span class="${rateOther(data.other_hours)}">${formatHours(data.other_hours)}</span>`, GOALS.other)],
         ["Unendorsed", withTooltip(`<span class="${rateUnendorsed(data.unendorsed_hours)}">${formatHours(data.unendorsed_hours)}</span>`, GOALS.unendorsed)],
         ["Untracked", withTooltip(`<span class="${rateUntracked(data.untracked_hours)}">${formatHours(data.untracked_hours)}</span>`, GOALS.untracked)],
     ], true);
