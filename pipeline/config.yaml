@@ -8,6 +8,9 @@ toggl:
     - "2. Learning"
     - "3. Outer"
   unendorsed_project: "6. Sins"
+  work_descriptions:
+    "5. Upkeep":
+      - "Tasks"
   sleep_project: "5. Upkeep"
   sleep_descriptions:
     - "Sleep"

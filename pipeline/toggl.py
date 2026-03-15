@@ -124,6 +124,11 @@ def compute_daily_metrics(
     always sum to 24 hours.
     """
     work_project_ids = {projects[n] for n in config["work_projects"] if n in projects}
+    work_desc_by_pid: dict[int, set[str]] = {}
+    for proj_name, descs in config.get("work_descriptions", {}).items():
+        pid = projects.get(proj_name)
+        if pid is not None:
+            work_desc_by_pid[pid] = {d.lower() for d in descs}
     unendorsed_id = projects.get(config["unendorsed_project"])
     sleep_project_id = projects.get(config["sleep_project"])
     sleep_descs = {d.lower() for d in config["sleep_descriptions"]}
@@ -158,11 +163,11 @@ def compute_daily_metrics(
         start_dt = datetime.fromisoformat(start_str.replace("Z", "+00:00")).astimezone(tz)
         stop_dt = datetime.fromisoformat(stop_str.replace("Z", "+00:00")).astimezone(tz)
 
-        is_tracked = pid in all_project_ids
-        is_work = pid in work_project_ids
-        is_unendorsed = pid == unendorsed_id
-
         desc = (entry.get("description") or "").lower()
+
+        is_tracked = pid in all_project_ids
+        is_work = pid in work_project_ids or (pid is not None and desc in work_desc_by_pid.get(pid, set()))
+        is_unendorsed = pid == unendorsed_id
         is_sleep_category = pid == sleep_project_id and desc in sleep_descs
         is_night_sleep = pid == sleep_project_id and desc == "sleep"
 
