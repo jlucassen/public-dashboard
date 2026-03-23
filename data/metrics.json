@@ -1,134 +1,8 @@
 {
-  "last_updated": "2026-03-22T23:20:01.224525-07:00",
+  "last_updated": "2026-03-23T00:26:21.714636-07:00",
   "timezone": "America/Los_Angeles",
   "max_past_weeks": 1,
   "days": [
-    {
-      "date": "2026-03-09",
-      "work_hours": 7.45,
-      "sleep_hours": 9.53,
-      "other_hours": 1.28,
-      "unendorsed_hours": 3.16,
-      "untracked_hours": 2.38,
-      "bedtime": "21:03",
-      "wake_time": "06:46",
-      "todoist": {
-        "Morning Hygiene": false,
-        "Morning OODA": false,
-        "Night Hygiene": false,
-        "Night OODA": false,
-        "Fortitude": true,
-        "Eat Healthy": false
-      }
-    },
-    {
-      "date": "2026-03-10",
-      "work_hours": 7.01,
-      "sleep_hours": 8.66,
-      "other_hours": 7.19,
-      "unendorsed_hours": 0.37,
-      "untracked_hours": 0.91,
-      "bedtime": "21:12",
-      "wake_time": "05:42",
-      "todoist": {
-        "Morning Hygiene": false,
-        "Morning OODA": false,
-        "Night Hygiene": false,
-        "Night OODA": false,
-        "Fortitude": false,
-        "Eat Healthy": false
-      }
-    },
-    {
-      "date": "2026-03-11",
-      "work_hours": 10.47,
-      "sleep_hours": 8.38,
-      "other_hours": 3.1,
-      "unendorsed_hours": 0.59,
-      "untracked_hours": 1.46,
-      "bedtime": "21:12",
-      "wake_time": "05:34",
-      "todoist": {
-        "Morning Hygiene": true,
-        "Morning OODA": true,
-        "Night Hygiene": true,
-        "Night OODA": false,
-        "Fortitude": true,
-        "Eat Healthy": false
-      }
-    },
-    {
-      "date": "2026-03-12",
-      "work_hours": 7.52,
-      "sleep_hours": 8.6,
-      "other_hours": 1.4,
-      "unendorsed_hours": 0.0,
-      "untracked_hours": 6.62,
-      "bedtime": "21:20",
-      "wake_time": "05:47",
-      "todoist": {
-        "Morning Hygiene": true,
-        "Morning OODA": true,
-        "Night Hygiene": false,
-        "Night OODA": false,
-        "Fortitude": false,
-        "Eat Healthy": false
-      }
-    },
-    {
-      "date": "2026-03-13",
-      "work_hours": 7.56,
-      "sleep_hours": 9.09,
-      "other_hours": 3.39,
-      "unendorsed_hours": 2.14,
-      "untracked_hours": 1.97,
-      "bedtime": "21:30",
-      "wake_time": "06:25",
-      "todoist": {
-        "Morning Hygiene": true,
-        "Morning OODA": false,
-        "Night Hygiene": false,
-        "Night OODA": false,
-        "Fortitude": false,
-        "Eat Healthy": false
-      }
-    },
-    {
-      "date": "2026-03-14",
-      "work_hours": 6.46,
-      "sleep_hours": 8.74,
-      "other_hours": 2.52,
-      "unendorsed_hours": 5.27,
-      "untracked_hours": 2.43,
-      "bedtime": "22:55",
-      "wake_time": "06:14",
-      "todoist": {
-        "Morning Hygiene": true,
-        "Morning OODA": true,
-        "Night Hygiene": false,
-        "Night OODA": false,
-        "Fortitude": false,
-        "Eat Healthy": false
-      }
-    },
-    {
-      "date": "2026-03-15",
-      "work_hours": 6.02,
-      "sleep_hours": 7.08,
-      "other_hours": 1.7,
-      "unendorsed_hours": 3.44,
-      "untracked_hours": 4.98,
-      "bedtime": "22:09",
-      "wake_time": "06:00",
-      "todoist": {
-        "Morning Hygiene": true,
-        "Morning OODA": false,
-        "Night Hygiene": false,
-        "Night OODA": false,
-        "Fortitude": false,
-        "Eat Healthy": false
-      }
-    },
     {
       "date": "2026-03-16",
       "work_hours": 6.1,
@@ -248,6 +122,24 @@
       "wake_time": "06:27",
       "todoist": {
         "Morning Hygiene": true,
+        "Morning OODA": false,
+        "Night Hygiene": false,
+        "Night OODA": false,
+        "Fortitude": false,
+        "Eat Healthy": false
+      }
+    },
+    {
+      "date": "2026-03-23",
+      "work_hours": null,
+      "sleep_hours": null,
+      "other_hours": null,
+      "unendorsed_hours": null,
+      "untracked_hours": null,
+      "bedtime": null,
+      "wake_time": null,
+      "todoist": {
+        "Morning Hygiene": null,
         "Morning OODA": null,
         "Night Hygiene": null,
         "Night OODA": null,
