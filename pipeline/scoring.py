@@ -132,7 +132,7 @@ def get_red_metrics(day: dict) -> tuple[list[str], int]:
     red_count = 0
 
     for name, weight, rate_fn in METRIC_DEFS:
-        if rate_fn(day, todoist) == "bad":
+        if rate_fn(day, todoist) in ("bad", "na"):
             red_names.append(name)
             red_count += weight
 
