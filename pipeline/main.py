@@ -12,6 +12,8 @@ from dotenv import load_dotenv
 
 from pipeline.toggl import get_workspace_and_projects, fetch_time_entries, compute_daily_metrics
 from pipeline.todoist import fetch_completed_items, compute_daily_completions
+from pipeline.scoring import get_red_metrics, find_consecutive_red_days
+from pipeline.notify import send_alert
 
 
 def load_config() -> dict:
@@ -92,15 +94,65 @@ def run(start_date: str | None = None):
         }
         days.append(day)
 
+    # --- Score ---
+    for day in days:
+        red_names, red_count = get_red_metrics(day)
+        day["red_count"] = red_count
+        day["red_metrics"] = red_names
+
+    # --- Read previous alert state ---
+    out_path = Path(__file__).parent.parent / "docs" / "data" / "metrics.json"
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+
+    last_alert_date = None
+    if out_path.exists():
+        try:
+            with open(out_path) as f:
+                old_metrics = json.load(f)
+            last_alert_date = old_metrics.get("last_alert_date")
+        except (json.JSONDecodeError, KeyError):
+            pass
+
+    # --- Check for consecutive bad days & notify ---
+    streak = find_consecutive_red_days(days, today)
+    if streak:
+        newest_bad_date = streak[-1][0]
+        if newest_bad_date != last_alert_date:
+            print(f"  RED ALERT: {len(streak)}-day streak detected ending {newest_bad_date}")
+            gmail_user = os.environ.get("GMAIL_USER")
+            gmail_password = os.environ.get("GMAIL_APP_PASSWORD")
+            emails_raw = os.environ.get("NOTIFICATION_EMAILS", "")
+            recipients = [e.strip() for e in emails_raw.split(",") if e.strip()]
+
+            if gmail_user and gmail_password and recipients:
+                try:
+                    send_alert(gmail_user, gmail_password, recipients, streak)
+                    last_alert_date = newest_bad_date
+                except Exception as e:
+                    print(f"  ERROR sending alert email: {e}")
+            else:
+                missing = []
+                if not gmail_user:
+                    missing.append("GMAIL_USER")
+                if not gmail_password:
+                    missing.append("GMAIL_APP_PASSWORD")
+                if not recipients:
+                    missing.append("NOTIFICATION_EMAILS")
+                print(f"  Skipping alert: missing env vars: {', '.join(missing)}")
+        else:
+            print(f"  Streak detected but already alerted for {newest_bad_date}, skipping")
+    else:
+        print("  No consecutive red-day streak detected")
+
+    # --- Write metrics ---
     metrics = {
         "last_updated": now.isoformat(),
         "timezone": config["timezone"],
         "max_past_weeks": config["max_past_weeks"],
+        "last_alert_date": last_alert_date,
         "days": days,
     }
 
-    out_path = Path(__file__).parent.parent / "docs" / "data" / "metrics.json"
-    out_path.parent.mkdir(parents=True, exist_ok=True)
     with open(out_path, "w") as f:
         json.dump(metrics, f, indent=2)
 
