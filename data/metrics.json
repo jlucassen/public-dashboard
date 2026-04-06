@@ -1,207 +1,9 @@
 {
-  "last_updated": "2026-04-05T23:31:07.585726-07:00",
+  "last_updated": "2026-04-06T00:29:46.180472-07:00",
   "timezone": "America/Los_Angeles",
   "max_past_weeks": 1,
-  "last_alert_date": null,
+  "last_alert_date": "2026-04-05",
   "days": [
-    {
-      "date": "2026-03-23",
-      "work_hours": 0.0,
-      "sleep_hours": null,
-      "other_hours": 0.0,
-      "unendorsed_hours": 0.0,
-      "untracked_hours": 22.24,
-      "bedtime": "22:14",
-      "wake_time": null,
-      "todoist": {
-        "Morning Hygiene": false,
-        "Morning OODA": false,
-        "Night Hygiene": false,
-        "Night OODA": false,
-        "Fortitude": false,
-        "Eat Healthy": false
-      },
-      "red_count": 9,
-      "red_metrics": [
-        "Work",
-        "Sleep",
-        "Untracked time",
-        "Wake time",
-        "Morning routine",
-        "Night routine",
-        "Fortitude",
-        "Eat Healthy"
-      ]
-    },
-    {
-      "date": "2026-03-24",
-      "work_hours": 7.62,
-      "sleep_hours": 8.49,
-      "other_hours": 3.23,
-      "unendorsed_hours": 3.23,
-      "untracked_hours": 1.14,
-      "bedtime": "21:56",
-      "wake_time": "06:43",
-      "todoist": {
-        "Morning Hygiene": false,
-        "Morning OODA": false,
-        "Night Hygiene": false,
-        "Night OODA": false,
-        "Fortitude": false,
-        "Eat Healthy": false
-      },
-      "red_count": 5,
-      "red_metrics": [
-        "Unendorsed time",
-        "Morning routine",
-        "Night routine",
-        "Fortitude",
-        "Eat Healthy"
-      ]
-    },
-    {
-      "date": "2026-03-25",
-      "work_hours": 1.19,
-      "sleep_hours": 10.27,
-      "other_hours": 0.0,
-      "unendorsed_hours": 0.0,
-      "untracked_hours": 11.84,
-      "bedtime": "21:14",
-      "wake_time": "08:12",
-      "todoist": {
-        "Morning Hygiene": false,
-        "Morning OODA": false,
-        "Night Hygiene": false,
-        "Night OODA": false,
-        "Fortitude": false,
-        "Eat Healthy": false
-      },
-      "red_count": 9,
-      "red_metrics": [
-        "Work",
-        "Sleep",
-        "Untracked time",
-        "Wake time",
-        "Morning routine",
-        "Night routine",
-        "Fortitude",
-        "Eat Healthy"
-      ]
-    },
-    {
-      "date": "2026-03-26",
-      "work_hours": 8.63,
-      "sleep_hours": 8.84,
-      "other_hours": 2.72,
-      "unendorsed_hours": 1.28,
-      "untracked_hours": 3.13,
-      "bedtime": "21:50",
-      "wake_time": "06:05",
-      "todoist": {
-        "Morning Hygiene": true,
-        "Morning OODA": true,
-        "Night Hygiene": false,
-        "Night OODA": false,
-        "Fortitude": false,
-        "Eat Healthy": false
-      },
-      "red_count": 5,
-      "red_metrics": [
-        "Unendorsed time",
-        "Untracked time",
-        "Night routine",
-        "Fortitude",
-        "Eat Healthy"
-      ]
-    },
-    {
-      "date": "2026-03-27",
-      "work_hours": 4.93,
-      "sleep_hours": null,
-      "other_hours": 2.61,
-      "unendorsed_hours": 1.0,
-      "untracked_hours": 8.67,
-      "bedtime": null,
-      "wake_time": "06:47",
-      "todoist": {
-        "Morning Hygiene": false,
-        "Morning OODA": false,
-        "Night Hygiene": false,
-        "Night OODA": false,
-        "Fortitude": false,
-        "Eat Healthy": false
-      },
-      "red_count": 10,
-      "red_metrics": [
-        "Work",
-        "Sleep",
-        "Unendorsed time",
-        "Untracked time",
-        "Bed time",
-        "Morning routine",
-        "Night routine",
-        "Fortitude",
-        "Eat Healthy"
-      ]
-    },
-    {
-      "date": "2026-03-28",
-      "work_hours": 0.0,
-      "sleep_hours": null,
-      "other_hours": 0.0,
-      "unendorsed_hours": 0.0,
-      "untracked_hours": 23.07,
-      "bedtime": "23:04",
-      "wake_time": null,
-      "todoist": {
-        "Morning Hygiene": false,
-        "Morning OODA": false,
-        "Night Hygiene": false,
-        "Night OODA": false,
-        "Fortitude": false,
-        "Eat Healthy": false
-      },
-      "red_count": 10,
-      "red_metrics": [
-        "Work",
-        "Sleep",
-        "Untracked time",
-        "Wake time",
-        "Bed time",
-        "Morning routine",
-        "Night routine",
-        "Fortitude",
-        "Eat Healthy"
-      ]
-    },
-    {
-      "date": "2026-03-29",
-      "work_hours": 0.0,
-      "sleep_hours": 6.65,
-      "other_hours": 3.54,
-      "unendorsed_hours": 3.33,
-      "untracked_hours": 9.57,
-      "bedtime": "22:09",
-      "wake_time": "05:43",
-      "todoist": {
-        "Morning Hygiene": true,
-        "Morning OODA": false,
-        "Night Hygiene": false,
-        "Night OODA": false,
-        "Fortitude": false,
-        "Eat Healthy": false
-      },
-      "red_count": 8,
-      "red_metrics": [
-        "Work",
-        "Sleep",
-        "Unendorsed time",
-        "Untracked time",
-        "Night routine",
-        "Fortitude",
-        "Eat Healthy"
-      ]
-    },
     {
       "date": "2026-03-30",
       "work_hours": 10.33,
@@ -375,6 +177,36 @@
       "bedtime": null,
       "wake_time": null,
       "todoist": {
+        "Morning Hygiene": false,
+        "Morning OODA": false,
+        "Night Hygiene": false,
+        "Night OODA": false,
+        "Fortitude": false,
+        "Eat Healthy": false
+      },
+      "red_count": 10,
+      "red_metrics": [
+        "Work",
+        "Sleep",
+        "Untracked time",
+        "Wake time",
+        "Bed time",
+        "Morning routine",
+        "Night routine",
+        "Fortitude",
+        "Eat Healthy"
+      ]
+    },
+    {
+      "date": "2026-04-06",
+      "work_hours": null,
+      "sleep_hours": null,
+      "other_hours": null,
+      "unendorsed_hours": null,
+      "untracked_hours": null,
+      "bedtime": null,
+      "wake_time": null,
+      "todoist": {
         "Morning Hygiene": null,
         "Morning OODA": null,
         "Night Hygiene": null,
@@ -382,10 +214,11 @@
         "Fortitude": null,
         "Eat Healthy": null
       },
-      "red_count": 10,
+      "red_count": 11,
       "red_metrics": [
         "Work",
         "Sleep",
+        "Unendorsed time",
         "Untracked time",
         "Wake time",
         "Bed time",
