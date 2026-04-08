@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-04-07T21:03:22.732304-07:00",
+  "last_updated": "2026-04-07T22:31:42.880821-07:00",
   "timezone": "America/Los_Angeles",
   "max_past_weeks": 1,
   "last_alert_date": null,
@@ -233,16 +233,15 @@
         "Night Hygiene": null,
         "Night OODA": null,
         "Fortitude": null,
-        "Eat Healthy": null
+        "Eat Healthy": true
       },
-      "red_count": 6,
+      "red_count": 5,
       "red_metrics": [
         "Sleep",
         "Untracked time",
         "Bed time",
         "Night routine",
-        "Fortitude",
-        "Eat Healthy"
+        "Fortitude"
       ]
     }
   ]
