@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-05-04T06:30:57.266193-07:00",
+  "last_updated": "2026-05-04T08:34:52.128537-07:00",
   "timezone": "America/Los_Angeles",
   "max_past_weeks": 1,
   "last_alert_date": null,
@@ -221,28 +221,27 @@
     },
     {
       "date": "2026-05-04",
-      "work_hours": 0.0,
+      "work_hours": 0.83,
       "sleep_hours": null,
-      "other_hours": 0.0,
-      "unendorsed_hours": 0.0,
-      "untracked_hours": 17.66,
+      "other_hours": 0.43,
+      "unendorsed_hours": 0.39,
+      "untracked_hours": 16.0,
       "bedtime": null,
       "wake_time": "06:20",
       "todoist": {
-        "Morning Hygiene": null,
+        "Morning Hygiene": true,
         "Morning OODA": null,
         "Night Hygiene": null,
         "Night OODA": null,
         "Fortitude": null,
         "Eat Healthy": null
       },
-      "red_count": 9,
+      "red_count": 8,
       "red_metrics": [
         "Work",
         "Sleep",
         "Untracked time",
         "Bed time",
-        "Morning routine",
         "Night routine",
         "Fortitude",
         "Eat Healthy"
