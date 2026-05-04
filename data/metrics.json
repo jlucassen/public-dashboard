@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-05-04T09:29:54.942663-07:00",
+  "last_updated": "2026-05-04T10:29:48.234307-07:00",
   "timezone": "America/Los_Angeles",
   "max_past_weeks": 1,
   "last_alert_date": null,
@@ -221,11 +221,11 @@
     },
     {
       "date": "2026-05-04",
-      "work_hours": 0.83,
+      "work_hours": 3.06,
       "sleep_hours": null,
-      "other_hours": 0.43,
+      "other_hours": 0.55,
       "unendorsed_hours": 0.39,
-      "untracked_hours": 16.0,
+      "untracked_hours": 13.66,
       "bedtime": null,
       "wake_time": "06:20",
       "todoist": {
