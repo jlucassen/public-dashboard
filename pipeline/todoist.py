@@ -1,8 +1,9 @@
 """Todoist API client. Checks daily completion of individual recurring tasks via activity log."""
 
-import requests
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
+
+from pipeline.http import get_with_retries
 
 
 TODOIST_API = "https://api.todoist.com/api/v1"
@@ -28,7 +29,7 @@ def fetch_completed_items(
         if cursor:
             params["cursor"] = cursor
 
-        resp = requests.get(
+        resp = get_with_retries(
             f"{TODOIST_API}/activities",
             headers={"Authorization": f"Bearer {token}"},
             params=params,

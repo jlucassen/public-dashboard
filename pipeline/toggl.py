@@ -13,10 +13,11 @@ always sum to exactly 24 hours. Untracked is the residual of the 24-hour
 midnight-to-midnight window.
 """
 
-import requests
 from datetime import datetime, timedelta
 from collections import defaultdict
 from zoneinfo import ZoneInfo
+
+from pipeline.http import get_with_retries
 
 
 TOGGL_API = "https://api.track.toggl.com/api/v9"
@@ -28,11 +29,11 @@ def _auth(token: str) -> tuple[str, str]:
 
 def get_workspace_and_projects(token: str) -> tuple[int, dict[str, int]]:
     """Returns (workspace_id, {project_name: project_id})."""
-    resp = requests.get(f"{TOGGL_API}/me", auth=_auth(token), timeout=30)
+    resp = get_with_retries(f"{TOGGL_API}/me", auth=_auth(token), timeout=30)
     resp.raise_for_status()
     workspace_id = resp.json()["default_workspace_id"]
 
-    resp = requests.get(
+    resp = get_with_retries(
         f"{TOGGL_API}/workspaces/{workspace_id}/projects",
         auth=_auth(token),
         timeout=30,
@@ -64,7 +65,7 @@ def fetch_time_entries(
             "start_date": current.strftime("%Y-%m-%dT00:00:00+00:00"),
             "end_date": (chunk_end + timedelta(days=2)).strftime("%Y-%m-%dT00:00:00+00:00"),
         }
-        resp = requests.get(
+        resp = get_with_retries(
             f"{TOGGL_API}/me/time_entries",
             auth=_auth(token),
             params=params,
