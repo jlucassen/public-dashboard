@@ -8,6 +8,11 @@ on:
 permissions:
   contents: write
 
+env:
+  # peaceiris/actions-gh-pages@v4 still ships Node 20; force Node 24 so we
+  # don't regress when GitHub flips the default in June 2026.
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
 jobs:
   update:
     runs-on: ubuntu-latest
