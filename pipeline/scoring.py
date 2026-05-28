@@ -66,13 +66,13 @@ def rate_wake_time(t):
     mins = _time_to_minutes(t)
     if mins is None:
         return "na"
-    if mins < 240:
-        return "bad"
     if mins < 300:
-        return "warn"
+        return "bad"
     if mins < 360:
-        return "good"
+        return "warn"
     if mins < 420:
+        return "good"
+    if mins < 480:
         return "warn"
     return "bad"
 
@@ -82,13 +82,13 @@ def rate_bed_time(t):
     if mins is None:
         return "na"
     adj = mins + 1440 if mins < 720 else mins
-    if adj < 1200:
-        return "bad"
     if adj < 1260:
-        return "warn"
+        return "bad"
     if adj < 1320:
-        return "good"
+        return "warn"
     if adj < 1380:
+        return "good"
+    if adj < 1440:
         return "warn"
     return "bad"
 
