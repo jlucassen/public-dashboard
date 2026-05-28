@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-05-27T17:22:10.612040-07:00",
+  "last_updated": "2026-05-27T18:32:00.227857-07:00",
   "timezone": "America/Los_Angeles",
   "max_past_weeks": 1,
   "last_alert_date": null,
@@ -267,10 +267,8 @@
         "Fortitude": true,
         "Eat Healthy": true
       },
-      "red_count": 1,
-      "red_metrics": [
-        "Wake time"
-      ]
+      "red_count": 0,
+      "red_metrics": []
     },
     {
       "date": "2026-05-27",

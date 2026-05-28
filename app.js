@@ -127,10 +127,10 @@ function timeToMinutes(t) {
 function rateWakeTime(t) {
     const mins = timeToMinutes(t);
     if (mins === null) return "na";
-    if (mins < 240) return "bad";
-    if (mins < 300) return "warn";
-    if (mins < 360) return "good";
-    if (mins < 420) return "warn";
+    if (mins < 300) return "bad";
+    if (mins < 360) return "warn";
+    if (mins < 420) return "good";
+    if (mins < 480) return "warn";
     return "bad";
 }
 
@@ -138,10 +138,10 @@ function rateBedTime(t) {
     const mins = timeToMinutes(t);
     if (mins === null) return "na";
     const adj = mins < 720 ? mins + 1440 : mins;
-    if (adj < 1200) return "bad";
-    if (adj < 1260) return "warn";
-    if (adj < 1320) return "good";
-    if (adj < 1380) return "warn";
+    if (adj < 1260) return "bad";
+    if (adj < 1320) return "warn";
+    if (adj < 1380) return "good";
+    if (adj < 1440) return "warn";
     return "bad";
 }
 
@@ -161,8 +161,8 @@ const GOALS = {
     other: [["> 6h", "bad"], ["4h – 6h", "warn"], ["3h – 4h", "good"], ["< 3h", "great"]],
     unendorsed: [["> 1h", "bad"], ["30m – 1h", "warn"], ["< 30m", "good"], ["0", "great"]],
     untracked: [["> 2h", "bad"], ["1h – 2h", "warn"], ["30m – 1h", "good"], ["< 30m", "great"]],
-    wakeTime: [["> 7:00", "bad"], ["6:00 – 7:00", "warn"], ["5:00 – 6:00", "good"], ["4:00 – 5:00", "warn"], ["< 4:00", "bad"]],
-    bedTime: [["> 23:00", "bad"], ["22:00 – 23:00", "warn"], ["21:00 – 22:00", "good"], ["20:00 – 21:00", "warn"], ["< 20:00", "bad"]],
+    wakeTime: [["> 8:00", "bad"], ["7:00 – 8:00", "warn"], ["6:00 – 7:00", "good"], ["5:00 – 6:00", "warn"], ["< 5:00", "bad"]],
+    bedTime: [["> 0:00", "bad"], ["23:00 – 0:00", "warn"], ["22:00 – 23:00", "good"], ["21:00 – 22:00", "warn"], ["< 21:00", "bad"]],
 };
 
 function renderSection(title, rows, startExpanded) {
