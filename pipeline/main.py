@@ -113,10 +113,13 @@ def run(start_date: str | None = None):
         except (json.JSONDecodeError, KeyError):
             pass
 
-    # --- Check for consecutive bad days & notify (midnight only) ---
-    is_midnight_run = now.hour == 0
+    # --- Check for consecutive bad days & notify (2 PM local only) ---
+    # Sent in the afternoon so the alert lands when James is awake even on
+    # rough days, rather than at midnight when he's likely still asleep.
+    ALERT_HOUR = 14
+    is_alert_run = now.hour == ALERT_HOUR
     streak = find_consecutive_red_days(days, today)
-    if streak and is_midnight_run:
+    if streak and is_alert_run:
         newest_bad_date = streak[-1][0]
         if newest_bad_date != last_alert_date:
             print(f"  RED ALERT: {len(streak)}-day streak detected ending {newest_bad_date}")
@@ -143,7 +146,7 @@ def run(start_date: str | None = None):
         else:
             print(f"  Streak detected but already alerted for {newest_bad_date}, skipping")
     elif streak:
-        print(f"  Streak detected but not midnight ({now.hour:02d}:00), skipping email")
+        print(f"  Streak detected but not alert hour ({now.hour:02d}:00 != {ALERT_HOUR:02d}:00), skipping email")
     else:
         print("  No consecutive red-day streak detected")
 
