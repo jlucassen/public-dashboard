@@ -133,6 +133,8 @@ def compute_daily_metrics(
     unendorsed_id = projects.get(config["unendorsed_project"])
     sleep_project_id = projects.get(config["sleep_project"])
     sleep_descs = {d.lower() for d in config["sleep_descriptions"]}
+    exercise_project_id = projects.get(config["exercise_project"])
+    exercise_descs = {d.lower() for d in config["exercise_descriptions"]}
     all_project_ids = {projects[n] for n in config["all_projects"] if n in projects}
 
     missing = [n for n in config["all_projects"] if n not in projects]
@@ -145,6 +147,7 @@ def compute_daily_metrics(
         "work_seconds": 0,
         "sleep_seconds_midnight": 0,
         "unendorsed_seconds": 0,
+        "exercise_seconds": 0,
     })
 
     night_sleep_entries: list[tuple[datetime, datetime]] = []
@@ -171,6 +174,7 @@ def compute_daily_metrics(
         is_unendorsed = pid == unendorsed_id
         is_sleep_category = pid == sleep_project_id and desc in sleep_descs
         is_night_sleep = pid == sleep_project_id and desc == "sleep"
+        is_exercise = pid == exercise_project_id and desc in exercise_descs
 
         if is_night_sleep:
             night_sleep_entries.append((start_dt, stop_dt))
@@ -186,6 +190,8 @@ def compute_daily_metrics(
                 days[date_key]["unendorsed_seconds"] += secs
             if is_sleep_category:
                 days[date_key]["sleep_seconds_midnight"] += secs
+            if is_exercise:
+                days[date_key]["exercise_seconds"] += secs
 
     # -- Phase 2: Bedtime and wake time (noon-to-noon windows) --
     # An entry starting at/after noon on day D -> window D = [noon(D), noon(D+1)).
@@ -270,6 +276,7 @@ def compute_daily_metrics(
             "sleep_hours": round(sleep_hrs, 2) if sleep_hrs is not None else None,
             "other_hours": round(other_secs / 3600, 2),
             "unendorsed_hours": round(unendorsed_secs / 3600, 2),
+            "exercise_minutes": round(data["exercise_seconds"] / 60),
             "bedtime": None,
             "wake_time": None,
         }

@@ -88,6 +88,7 @@ def run(start_date: str | None = None):
             "other_hours": toggl.get("other_hours"),
             "unendorsed_hours": toggl.get("unendorsed_hours"),
             "untracked_hours": untracked,
+            "exercise_minutes": toggl.get("exercise_minutes"),
             "bedtime": toggl.get("bedtime"),
             "wake_time": toggl.get("wake_time"),
             "todoist": todoist_days.get(date_str, {}),

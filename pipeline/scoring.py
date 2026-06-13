@@ -55,6 +55,18 @@ def rate_untracked(h):
     return "bad"
 
 
+def rate_exercise(mins):
+    if mins is None:
+        return "na"
+    if mins == 0:
+        return "bad"
+    if mins < 25:
+        return "warn"
+    if mins <= 35:
+        return "good"
+    return "warn"
+
+
 def _time_to_minutes(t):
     if not t:
         return None
@@ -122,6 +134,7 @@ METRIC_DEFS = [
     ("Night routine", 1, lambda d, t: rate_combined_routine(t.get("Night Hygiene"), t.get("Night OODA"))),
     ("Fortitude", 1, lambda d, t: rate_single_task(t.get("Fortitude"))),
     ("Eat Healthy", 1, lambda d, t: rate_single_task(t.get("Eat Healthy"))),
+    ("Exercise", 1, lambda d, t: rate_exercise(d.get("exercise_minutes"))),
 ]
 
 

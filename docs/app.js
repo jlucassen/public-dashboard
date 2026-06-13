@@ -109,6 +109,14 @@ function rateUntracked(h) {
     return "bad";
 }
 
+function rateExercise(mins) {
+    if (mins === null || mins === undefined) return "na";
+    if (mins === 0) return "bad";
+    if (mins < 25) return "warn";
+    if (mins <= 35) return "good";
+    return "warn";
+}
+
 function rateSleep(h) {
     if (h === null || h === undefined) return "na";
     if (h < 7) return "bad";
@@ -161,6 +169,7 @@ const GOALS = {
     other: [["> 6h", "bad"], ["4h – 6h", "warn"], ["3h – 4h", "good"], ["< 3h", "great"]],
     unendorsed: [["> 1h", "bad"], ["30m – 1h", "warn"], ["< 30m", "good"], ["0", "great"]],
     untracked: [["> 2h", "bad"], ["1h – 2h", "warn"], ["30m – 1h", "good"], ["< 30m", "great"]],
+    exercise: [["> 35m", "warn"], ["25m – 35m", "good"], ["< 25m", "warn"], ["0m", "bad"]],
     wakeTime: [["> 8:00", "bad"], ["7:00 – 8:00", "warn"], ["6:00 – 7:00", "good"], ["5:00 – 6:00", "warn"], ["< 5:00", "bad"]],
     bedTime: [["> 0:00", "bad"], ["23:00 – 0:00", "warn"], ["22:00 – 23:00", "good"], ["21:00 – 22:00", "warn"], ["< 21:00", "bad"]],
 };
@@ -214,9 +223,12 @@ function renderDayCard(date, data, isToday, isFuture) {
         ["Bed time", withTooltip(`<span class="${rateBedTime(data.bedtime)}">${formatTime(data.bedtime)}</span>`, GOALS.bedTime)],
     ], true);
 
+    const exMins = data.exercise_minutes;
+    const exHours = exMins == null ? null : exMins / 60;
     const virtueSection = renderSection("Virtue", [
         ["Fortitude", statusDot(todoist["Fortitude"])],
         ["Eat Healthy", statusDot(todoist["Eat Healthy"])],
+        ["Exercise", withTooltip(`<span class="${rateExercise(exMins)}">${formatHours(exHours)}</span>`, GOALS.exercise)],
     ], true);
 
     const cls = isToday ? "day-card today" : "day-card";

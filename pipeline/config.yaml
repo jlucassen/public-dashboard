@@ -15,6 +15,11 @@ toggl:
   sleep_descriptions:
     - "Sleep"
     - "Nap"
+  exercise_project: "4. Rest"
+  exercise_descriptions:
+    - "Movement"
+    - "Strength"
+    - "Cardio"
   all_projects:
     - "1. Work"
     - "2. Learning"
