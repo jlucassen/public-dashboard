@@ -1,8 +1,8 @@
 {
-  "last_updated": "2026-06-26T13:30:18.640711-07:00",
+  "last_updated": "2026-06-26T14:26:15.922193-07:00",
   "timezone": "America/Los_Angeles",
   "max_past_weeks": 1,
-  "last_alert_date": null,
+  "last_alert_date": "2026-06-25",
   "days": [
     {
       "date": "2026-06-15",
