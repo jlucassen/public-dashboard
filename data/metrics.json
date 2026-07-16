@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-16T15:45:04.138705-07:00",
+  "last_updated": "2026-07-16T16:45:31.995641-07:00",
   "timezone": "America/Los_Angeles",
   "max_past_weeks": 1,
   "last_alert_date": null,
@@ -316,11 +316,11 @@
     },
     {
       "date": "2026-07-16",
-      "work_hours": 4.6,
+      "work_hours": 5.73,
       "sleep_hours": null,
       "other_hours": 0.31,
       "unendorsed_hours": 0.0,
-      "untracked_hours": 11.14,
+      "untracked_hours": 10.02,
       "exercise_minutes": 0,
       "bedtime": null,
       "wake_time": "06:27",
