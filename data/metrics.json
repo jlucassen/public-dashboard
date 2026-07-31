@@ -1,8 +1,8 @@
 {
-  "last_updated": "2026-07-31T14:54:35.043816-07:00",
+  "last_updated": "2026-07-31T15:48:09.800697-07:00",
   "timezone": "America/Los_Angeles",
   "max_past_weeks": 1,
-  "last_alert_date": "2026-07-30",
+  "last_alert_date": null,
   "days": [
     {
       "date": "2026-07-20",
@@ -356,11 +356,11 @@
     },
     {
       "date": "2026-07-31",
-      "work_hours": 3.89,
+      "work_hours": 5.71,
       "sleep_hours": null,
       "other_hours": 0.8,
       "unendorsed_hours": 0.0,
-      "untracked_hours": 19.31,
+      "untracked_hours": 17.49,
       "exercise_minutes": 0,
       "bedtime": null,
       "wake_time": null,
