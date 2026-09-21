@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-21T13:09:37.753191-07:00",
+  "last_updated": "2026-09-21T16:42:10.508226-07:00",
   "timezone": "America/Los_Angeles",
   "max_past_weeks": 1,
   "last_alert_date": null,
@@ -234,11 +234,11 @@
     },
     {
       "date": "2026-09-21",
-      "work_hours": 4.08,
+      "work_hours": 7.29,
       "sleep_hours": null,
       "other_hours": 0.55,
       "unendorsed_hours": 0.09,
-      "untracked_hours": 12.18,
+      "untracked_hours": 8.97,
       "exercise_minutes": 0,
       "bedtime": null,
       "wake_time": "07:05",
@@ -250,9 +250,8 @@
         "Fortitude": null,
         "Eat Healthy": null
       },
-      "red_count": 10,
+      "red_count": 8,
       "red_metrics": [
-        "Work",
         "Sleep",
         "Untracked time",
         "Bed time",
